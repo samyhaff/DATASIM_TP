@@ -10,7 +10,6 @@ subplot(1,2,1);
 plot(t, win);
 title('fenêtre d''observation');
 xlabel('temps (jour)');
-% set(gca,'ylim',[0,1.1]);
 
 subplot(1,2,2);
 plot(f, y);
