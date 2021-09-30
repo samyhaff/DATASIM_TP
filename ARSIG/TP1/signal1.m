@@ -16,20 +16,20 @@ subplot(1,3,1);
 plot(signal);
 title('Signal');
 xlabel('échantillon n');
-% ylabel('');
+ylabel('x|n]');
 
 subplot(1,3,2);
 plot(x, y);
 set(gca,'xlim',[0,Fs/2]);
 title('Périodogramme du signal');
 xlabel('Fréquence réduite');
-% ylabel('');
+ylabel('amplitude');
 
 subplot(1,3,3);
 plot(x,yfenetre);
 set(gca,'xlim',[0,Fs/2]);
 title('Périodogramme du signal fenêtré (Hamming)');
 xlabel('Fréquence réduite');
-% ylabel('');
+ylabel('amplitude');
 
 % ajouter Blackman ?
