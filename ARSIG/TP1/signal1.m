@@ -31,5 +31,3 @@ set(gca,'xlim',[0,Fs/2]);
 title('Périodogramme du signal fenêtré (Hamming)');
 xlabel('Fréquence réduite');
 ylabel('amplitude');
-
-% ajouter Blackman ?

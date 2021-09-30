@@ -34,8 +34,8 @@ xlabel('Fréquence réduite');
 
 residu = x.*win;
 M = max(y);
-iter = 1
-tolerance = 8
+iter = 1;
+tolerance = 8;
 while M > tolerance 
     [M, i] = max(y);
     f_est = f(i);
@@ -46,16 +46,20 @@ while M > tolerance
     y = 1/N*abs(y).^2;
 
     printf('Itération : %d    Composante détectée : %d\n', iter, f_est);
-    figure(3 + iter);
-    subplot(1,2,1);
+    figure(2 + iter);
+    subplot(1,3,1);
     plot(t, residu);
     title('Residu');
     xlabel('temps (jour)');
-    subplot(1,2,2);
+    subplot(1,3,2);
     plot(f, y);
     set(gca,'xlim',[0,Fs/2]);
+    set(gca,'ylim',[0,25]);
     title('Transformee de Fourier du residu');
     xlabel('temps (jour)');
+    subplot(1,3,3);
+    plot(contrib);
+    title('Contribution');
 
     iter = iter + 1;
 end
