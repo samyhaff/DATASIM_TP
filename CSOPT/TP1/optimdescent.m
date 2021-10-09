@@ -19,7 +19,8 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
     %    result.stop : condition d'arret ('TolX', 'TolG', 'TolF', 'Maxiter')
     % xval : valeurs des it?r?es
     %
-
+    tic
+    
     k = 1;
     x = x0;
     stop = 0;
@@ -29,15 +30,52 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
 
     while not(stop)
         [y, g, h, j] = feval(critfun, x, params);
-        if options.method == 'gradient'
+        if isequal(options.method, 'gradient')
             d = -g / norm(g);
+        elseif isequal(options.method, 'gradient_conjug')
+            if k > 1
+                x_old=xval(:,length(xval)-1)
+                x_new=x;
+                [y, g_old, h, j] = feval(critfun, x_old, params);
+                [y, g_new, h, j] = feval(critfun, x_new, params);
+                beta=norm(g_new)/norm(g_old);
+                d=-g_new+beta*d;
+
+            else
+               d = -g; 
+            end
+        elseif isequal(options.method, 'Newton')
+            d=-inv(h)*g;
+        elseif isequal(options.method, 'BFGS')
+            if k>1
+                x_old=xval(:,length(xval)-1);
+                x_new=x;
+                [y1, g_old, h, j] = feval(critfun, x_old, params);
+           
+                [y2, g_new, h, j] = feval(critfun, x_new, params);
+                s=x_new-x_old;
+                
+                y3=g_new-g_old;
+                
+                
+                B=B-(B*s*s'*B)/(s'*B*s)+(y3*y3')/(y3'*s);
+                d=-inv(B)*g_new;
+            else
+                B=norm(g)*eye(length(x));
+                
+                d=-inv(B)*g;
+            end
+                
         else
             error("Methode non reconnue")
         end
-        if options.pas == "fixe"
+        if d'*g>0
+            d=-d;
+        end
+        if isequal(options.pas, "fixe")
            alpha = options.pasInit;
         else
-            alpha = 
+            alpha = pas(critfun, options.beta, d, options.const, x, options,params);
         end
         xval = [xval, x];
         fval = [fval, y];
@@ -66,8 +104,17 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
     result.grad = gval;
     result.temps = 0;
     xh = x;
+    
+    result.temp = toc
 end
 
-function alpha = pas(critfun, beta, d, c, x]
-
+function alpha = pas(critfun, beta, d, c, x, options,params)
+    alpha=options.pasInit;
+    [y, g, h, j] = feval(critfun, x, params);
+    [y1, g, h, j] = feval(critfun, x+alpha*d, params);
+    while y1>y+c*alpha*g'*d
+        alpha=beta*alpha;
+        [y1, g, h, j] = feval(critfun, x+alpha*d, params);
+    end
+    
 end
