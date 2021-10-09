@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.25)  30 SEP 2021 19:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.25)  9 OCT 2021 15:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -22,7 +22,19 @@ File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+) (/home/samy/Notes/cours/DATASIM_TP/packages/preamble.sty
+
+/home/samy/Notes/cours/DATASIM_TP/packages/preamble.sty:1: LaTeX Error: Two \documentclass or \documentstyle commands.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \documentclass[12pt,a4paper,titlepage]{
+                                           article}
+The document may only declare one class.
+
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -103,7 +115,7 @@ Package babel Info: Making ? an active character on input line 433.
 \parindentFFN=\dimen156
 \FBfnindent=\dimen157
 )) (/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty)
-./rapport.tex:7: Undefined control sequence.
+/home/samy/Notes/cours/DATASIM_TP/packages/preamble.sty:7: Undefined control sequence.
 <recently read> \restoreparindent 
                                   
 l.7 \restoreparindent
@@ -203,27 +215,27 @@ Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \TX@ftn=\toks25
 ) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count281
 \l__pdf_internal_box=\box54
 ) (./rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -278,107 +290,107 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \degres on input line 53.
-LaTeX Info: Redefining \dots on input line 53.
+LaTeX Info: Redefining \degres on input line 9.
+LaTeX Info: Redefining \dots on input line 9.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 53.
+(french.ldf)             reported on input line 9.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 53.
-LaTeX Info: Redefining \up on input line 53.
+(french.ldf)             reported on input line 9.
+LaTeX Info: Redefining \up on input line 9.
 \c@lstlisting=\count288
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 55.
+(Font)              <14.4> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 55.
+(Font)              <7> on input line 11.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 <images//sig1.png, id=8, 1264.725pt x 702.4644pt>
 File: images//sig1.png Graphic file (type png)
 <use images//sig1.png>
-Package pdftex.def Info: images//sig1.png  used on input line 71.
+Package pdftex.def Info: images//sig1.png  used on input line 27.
 (pdftex.def)             Requested size: 507.88533pt x 282.08481pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 82.
+(Font)              <12> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 82.
+(Font)              <8> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 82.
+(Font)              <6> on input line 38.
 <images//sig2.png, id=9, 1264.725pt x 702.4644pt>
 File: images//sig2.png Graphic file (type png)
 <use images//sig2.png>
-Package pdftex.def Info: images//sig2.png  used on input line 96.
+Package pdftex.def Info: images//sig2.png  used on input line 52.
 (pdftex.def)             Requested size: 507.88533pt x 282.08481pt.
  [1 <./images//sig1.png (PNG copy)>]
 <images//sig3.png, id=20, 1264.725pt x 702.4644pt>
 File: images//sig3.png Graphic file (type png)
 <use images//sig3.png>
-Package pdftex.def Info: images//sig3.png  used on input line 113.
+Package pdftex.def Info: images//sig3.png  used on input line 69.
 (pdftex.def)             Requested size: 507.88533pt x 282.08481pt.
  [2 <./images//sig2.png (PNG copy)>]
 <images//sig4.png, id=24, 1264.725pt x 702.4644pt>
 File: images//sig4.png Graphic file (type png)
 <use images//sig4.png>
-Package pdftex.def Info: images//sig4.png  used on input line 127.
+Package pdftex.def Info: images//sig4.png  used on input line 83.
 (pdftex.def)             Requested size: 507.88533pt x 282.08481pt.
  [3 <./images//sig3.png (PNG copy)>]
-Underfull \hbox (badness 6608) in paragraph at lines 156--156
+Underfull \hbox (badness 6608) in paragraph at lines 112--112
 []|\T1/cmr/m/n/12 Réduction de l'in-fluence du
  []
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 156--156
+Underfull \hbox (badness 2165) in paragraph at lines 112--112
 []|\T1/cmr/m/n/12 perte de l'hy-po-thèse de sta-
  []
 
 
-Underfull \hbox (badness 3189) in paragraph at lines 156--156
+Underfull \hbox (badness 3189) in paragraph at lines 112--112
 \T1/cmr/m/n/12 tion-na-rité si re-cherche d'une
  []
 
 
-Underfull \hbox (badness 6608) in paragraph at lines 156--156
+Underfull \hbox (badness 6608) in paragraph at lines 112--112
 []|\T1/cmr/m/n/12 Réduction de l'in-fluence du
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 156--156
+Underfull \hbox (badness 2027) in paragraph at lines 112--112
 []|\T1/cmr/m/n/12 Couteux en cal-culs, mé-thode
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 156--156
+Underfull \hbox (badness 2027) in paragraph at lines 112--112
 []|\T1/cmr/m/n/12 Couteux en cal-culs, mé-thode
  []
 
 <images//win.png, id=28, 2994.18625pt x 1498.59875pt>
 File: images//win.png Graphic file (type png)
 <use images//win.png>
-Package pdftex.def Info: images//win.png  used on input line 168.
+Package pdftex.def Info: images//win.png  used on input line 124.
 (pdftex.def)             Requested size: 507.88533pt x 254.18675pt.
 [4 <./images//sig4.png (PNG copy)>]
 <images//periodogramme_sig.png, id=32, 2994.18625pt x 1498.59875pt>
 File: images//periodogramme_sig.png Graphic file (type png)
 <use images//periodogramme_sig.png>
-Package pdftex.def Info: images//periodogramme_sig.png  used on input line 179.
+Package pdftex.def Info: images//periodogramme_sig.png  used on input line 135.
 (pdftex.def)             Requested size: 507.88533pt x 254.18675pt.
  [5 <./images//win.png (PNG copy)> <./images//periodogramme_sig.png (PNG copy)>]
 <images//iter1.png, id=36, 2994.18625pt x 1498.59875pt>
 File: images//iter1.png Graphic file (type png)
 <use images//iter1.png>
-Package pdftex.def Info: images//iter1.png  used on input line 197.
+Package pdftex.def Info: images//iter1.png  used on input line 153.
 (pdftex.def)             Requested size: 507.88533pt x 254.18675pt.
 <images//iter2.png, id=37, 2994.18625pt x 1498.59875pt>
 File: images//iter2.png Graphic file (type png)
 <use images//iter2.png>
-Package pdftex.def Info: images//iter2.png  used on input line 203.
+Package pdftex.def Info: images//iter2.png  used on input line 159.
 (pdftex.def)             Requested size: 507.88533pt x 254.18675pt.
 <images//iter3.png, id=38, 2994.18625pt x 1498.59875pt>
 File: images//iter3.png Graphic file (type png)
 <use images//iter3.png>
-Package pdftex.def Info: images//iter3.png  used on input line 209.
+Package pdftex.def Info: images//iter3.png  used on input line 165.
 (pdftex.def)             Requested size: 507.88533pt x 254.18675pt.
  [6 <./images//iter1.png (PNG copy)> <./images//iter2.png (PNG copy)>] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
@@ -1982,15 +1994,15 @@ Alternatively, save the file in UTF-8 using your editor or another tool
 
 ) [11] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 7531 strings out of 478994
- 102852 string characters out of 5864751
+ 7541 strings out of 478994
+ 103120 string characters out of 5864751
  839677 words of memory out of 5000000
- 24926 multiletter control sequences out of 15000+600000
+ 24932 multiletter control sequences out of 15000+600000
  414242 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,10n,74p,517b,2301s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,10n,88p,518b,2301s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on rapport.pdf (12 pages, 864537 bytes).
+Output written on rapport.pdf (12 pages, 864480 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
