@@ -12,37 +12,37 @@ f2 = 0.25 + 0.2 * n / N;
 x1 = cos(2 * pi * phi1);
 x2 = cos(2 * pi * phi2);
 
-% figure(1);
-% subplot(2, 3, 1);
-% plot(x1);
-% title('Allure temporelle x1')
-% xlim([0 N])
-% xlabel('n')
-% subplot(2, 3, 2);
-% plot(phi1);
-% title('Phase instantannée x1')
-% xlim([0 N])
-% xlabel('n')
-% subplot(2, 3, 3);
-% plot(f1);
-% title('Fréquence instantannée x1')
-% xlim([0 N])
-% xlabel('n')
-% subplot(2, 3, 4);
-% plot(x2);
-% title('Allure temporelle x2')
-% xlim([0 N])
-% xlabel('n')
-% subplot(2, 3, 5);
-% plot(phi2);
-% title('Phase instantannée x2')
-% xlim([0 N])
-% xlabel('n')
-% subplot(2, 3, 6);
-% plot(f2);
-% title('Fréquence instantannée x2')
-% xlim([0 N])
-% xlabel('n')
+figure(1);
+subplot(2, 3, 1);
+plot(x1);
+title('Allure temporelle x1')
+xlim([0 N])
+xlabel('n')
+subplot(2, 3, 2);
+plot(phi1);
+title('Phase instantannée x1')
+xlim([0 N])
+xlabel('n')
+subplot(2, 3, 3);
+plot(f1);
+title('Fréquence instantannée x1')
+xlim([0 N])
+xlabel('n')
+subplot(2, 3, 4);
+plot(x2);
+title('Allure temporelle x2')
+xlim([0 N])
+xlabel('n')
+subplot(2, 3, 5);
+plot(phi2);
+title('Phase instantannée x2')
+xlim([0 N])
+xlabel('n')
+subplot(2, 3, 6);
+plot(f2);
+title('Fréquence instantannée x2')
+xlim([0 N])
+xlabel('n')
 
 T1 = 15; 
 T2 = 85; 
@@ -56,24 +56,36 @@ x3(T2:T2+Nh-1) = h.*cos(2*pi*0.15*th);
 x3(T2:T2+Nh-1) = x3(T2:T2+Nh-1) + h.*cos(2*pi*0.35*th);
 x3(T3:T3+Nh-1) = h.*cos(2*pi*0.3*th);
 
-% figure(2);
-% plot(x3);
-% xlabel('n')
-% xlim([0 N])
-% title('Allure temporelle de x3')
-% ylabel('Amplitude')
+figure(2);
+plot(x3);
+xlabel('n')
+xlim([0 N])
+title('Allure temporelle de x3')
+ylabel('Amplitude')
 
 x1_bruit = ajoute_bruit(x1,10);
 x2_bruit = ajoute_bruit(x2,10);
 x3_bruit = ajoute_bruit(x3,10);
 
-% figure(3);
-% subplot(1, 3, 1);
-% plot(x1_bruit);
-% subplot(1, 3, 2);
-% plot(x2_bruit);
-% subplot(1, 3, 3);
-% plot(x3_bruit);
+figure(3);
+subplot(1, 3, 1);
+plot(x1_bruit);
+title('Allure x_1 bruité')
+xlim([0 N])
+xlabel('n')
+ylabel('amplitude')
+subplot(1, 3, 2);
+plot(x2_bruit);
+title('Allure x_1 bruité')
+xlim([0 N])
+xlabel('n')
+ylabel('amplitude')
+subplot(1, 3, 3);
+plot(x3_bruit);
+title('Allure x_1 bruité')
+xlim([0 N])
+xlabel('n')
+ylabel('amplitude')
 
 x = [x1; x2; x3; x1_bruit; x2_bruit; x3_bruit]; 
 for j = 1:6

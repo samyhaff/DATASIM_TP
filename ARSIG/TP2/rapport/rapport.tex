@@ -52,11 +52,69 @@ Pour chaque signal nous allons maintenant représenter :
 
 On obtient les figures suivantes :
 
+\begin{figure}[H]
+    \caption{Tracés $x_1$}
+    \includegraphics[width=\textwidth]{repr1}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Tracés $x_2$}
+    \includegraphics[width=\textwidth]{repr2}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Tracés $x_3$}
+    \includegraphics[width=\textwidth]{repr3}
+    \centering
+\end{figure}
+
+\subsection{Influence du bruit}
+
+Perturbons les signaux à l'aide d'un bruit additif gaussien pour un rapport signal sur bruit de
+10dB, on obtient les allures temporelles suivantes :
+
+\begin{figure}[H]
+    \caption{Allure temporelles des signaux bruités}
+    \includegraphics[width=\textwidth]{bruit}
+    \centering
+\end{figure}
+
+Les différentes représentations suivantes deviennent alors (avec $x_4$ correspondant à $x_1$ bruité,
+$x_5$ à $x_2$ bruité et $x_6$ à $x_3$ bruité) :
+
+\begin{figure}[H]
+    \caption{Tracés $x_1$ bruité}
+    \includegraphics[width=\textwidth]{repr4}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Tracés $x_2$ bruité}
+    \includegraphics[width=\textwidth]{repr5}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Tracés $x_3$ bruité}
+    \includegraphics[width=\textwidth]{repr6}
+    \centering
+\end{figure}
+
+\pagebreak
+
+\section{Détection et reconstruction d'une partition musicale}
+
 \begin{appendices}
 
     \section{Scripts Représentation temps-fréquence de signaux simulés}
 
     \lstinputlisting[language=Matlab]{../ex1.m}
+
+    \section{Scripts Détection et reconstruction d'une partition musicale}
+
+    \lstinputlisting[language=Matlab]{../ex2.m}
 
 \end{appendices}
 
