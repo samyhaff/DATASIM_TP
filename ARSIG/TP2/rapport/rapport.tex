@@ -44,7 +44,7 @@ Pour chaque signal nous allons maintenant représenter :
     \item{Le spectrogramme en utilisant une fenêtre de Hamming de longueur \texttt{Nh} = 17, 33, 65
         et 129.}
     \item{La transformée de Wigner-Ville}
-    \item{La transformée de pseudo-Wigner-Ville en utilisant uen fenêtre de Kaiser avec \texttt{Nh}
+    \item{La transformée de pseudo-Wigner-Ville en utilisant une fenêtre de Kaiser avec \texttt{Nh}
         = 63.}
     \item{La transformée de pseudo-Wigner-Ville lissée avec des fenêtres de Kaiser de longueur
         \texttt{Ng} = 33 et \texttt{Nh} = 63, puis \texttt{Ng} = 15 et \texttt{Nh} = 63.}
@@ -69,6 +69,10 @@ On obtient les figures suivantes :
     \includegraphics[width=\textwidth]{repr3}
     \centering
 \end{figure}
+
+On arrive alors à interpréter facilement les resultats avec ce type de représentation.
+\\ En utilisant des fenêtres longues, on a une bonne résolution spectrale mais mauvaise temporelle. Pour les fenêtres courte c'est l'inverse.
+La fenêtre de taille moyenne est un bon compromis.
 
 \subsection{Influence du bruit}
 
@@ -102,6 +106,7 @@ $x_5$ à $x_2$ bruité et $x_6$ à $x_3$ bruité) :
     \centering
 \end{figure}
 
+On remarque que les problèmes de résolutions des petites fenêtres et grande fenêtres sont amplifiées par le bruit.
 \pagebreak
 
 \section{Détection et reconstruction d'une partition musicale}
@@ -111,14 +116,27 @@ $x_5$ à $x_2$ bruité et $x_6$ à $x_3$ bruité) :
     \item{On charge le fichier à l'aide de la fonction \texttt{audioread} de matlab}
 
     \item{Représentons l'allure temporelle et le spectrogramme en échelle logarithmique de ce signal :
-
+	\begin{figure}[H]
+   		 \caption{Allure temporelle }
+  		  \includegraphics[width=\textwidth]{%ACOMPLETER%}
+    	\centering
+\end{figure}
         }
 
-    \item{}
+    \item{On peut ensuite calculer pour un temps tau la différence du contenue frequentiel entre tau et tau +1 en mesurant un indice de stationnarité.}
 
-    \item{}
+    \item{Une grande différence entre tau et tau+1 marque alors le passage d'une note à une autre. On peut alors trouver les maximas de notre fonctions I qui prenais la différence du contenue fréquentiel en ordonnées pour un temps t en abscisse. On cherche donc à savoir quand cette fonction est maximale pour détecter ses changements de fréquences }
 
-    \item{}
+    \item{On obtient alors une liste d'instant sur laquelle on va itérer. Pour chacun de ces instants, on calcule la fréquence pour laquelle la transformée de fourrier est maximale en module. On trouve alors une fréquence pour laquelle on cherche à associer une note}
+    
+    \item{On obtient alors la liste de notes suivante :
+    \begin{figure}[H]
+    	\caption{Liste de notes obtenues}
+    	\includegraphics[width=\textwidth]{%A COMPELTER}
+    \centering
+\end{figure}}
+    
+    \item{On peut finalement, envoyer cette liste de note ainsi que le temps préalablement calculer de chaque note à une fonction genere_morceau pour reconstituer notre mélodie}
 
 \end{enumerate}
 

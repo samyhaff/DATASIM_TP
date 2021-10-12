@@ -20,12 +20,12 @@ xlim([0 N])
 xlabel('n')
 subplot(2, 3, 2);
 plot(phi1);
-title('Phase instantannée x1')
+title("Phase instantannee x1")
 xlim([0 N])
 xlabel('n')
 subplot(2, 3, 3);
 plot(f1);
-title('Fréquence instantannée x1')
+title('Fréquence instantannee x1')
 xlim([0 N])
 xlabel('n')
 subplot(2, 3, 4);
@@ -35,12 +35,12 @@ xlim([0 N])
 xlabel('n')
 subplot(2, 3, 5);
 plot(phi2);
-title('Phase instantannée x2')
+title('Phase instantannee x2')
 xlim([0 N])
 xlabel('n')
 subplot(2, 3, 6);
 plot(f2);
-title('Fréquence instantannée x2')
+title('Fréquence instantannee x2')
 xlim([0 N])
 xlabel('n')
 
