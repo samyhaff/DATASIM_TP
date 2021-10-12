@@ -413,6 +413,14 @@ INPUT ./images//repr6.png
 INPUT images//repr6.png
 INPUT ./images//repr6.png
 INPUT ./images//repr6.png
+INPUT ./images//ex2.png
+INPUT images//ex2.png
+INPUT ./images//ex2.png
+INPUT ./images//ex2.png
+INPUT ./images//notes.png
+INPUT images//notes.png
+INPUT ./images//notes.png
+INPUT ./images//notes.png
 INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texmf-dist/tex/latex/listings/lstlang1.sty

@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1633895551 "rapport.tex" "rapport.pdf" "rapport" 1633895551
-  "../ex1.m" 1633872465 2900 df579a75a30f912d8db29913056b5f92 ""
-  "../ex2.m" 1633895550 1383 a49efdb2019a9e05d1d70e76fe5d8452 ""
+["pdflatex"] 1634070546 "rapport.tex" "rapport.pdf" "rapport" 1634070546
+  "../ex1.m" 1634069823 2764 26da8e30af61160cb13bd2f5eaee1a2f ""
+  "../ex2.m" 1634070446 1368 10b1113b9e84ec0242da41fa1433b0d3 ""
   "/home/samy/Notes/cours/DATASIM_TP/packages/preamble.sty" 1633872612 2477 c6d5fbcf5b36099e78197d8fac795598 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1617738065 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1617738065 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -87,15 +87,17 @@
   "images//bruit.png" 1633871527 89423 afecc5c826e94948558ed464a72affe0 ""
   "images//ex1q1.png" 1633857703 134227 60b72a03dcdf2c2867cb91682f786c85 ""
   "images//ex1q2.png" 1633857983 66605 4970acc1688ebc85fb5c20e0b82d2e28 ""
+  "images//ex2.png" 1634069266 1222082 d6238afdedab86ff3accdbd2b80cbac7 ""
+  "images//notes.png" 1634070224 30656 5b092a63079674078b70d9c56e100dea ""
   "images//repr1.png" 1633870053 242919 2c19389885bc3e26af7c5738fa2c44f2 ""
   "images//repr2.png" 1633870069 221577 37bfcf07d76a7281d3c739897838ab4e ""
   "images//repr3.png" 1633870080 166810 d4738f650d46eb307c1fc56dae624249 ""
   "images//repr4.png" 1633872064 288416 5fa32e855f10879fc55925272ad27772 ""
   "images//repr5.png" 1633872073 275691 5b6c2c71e98fa2089fab9cdcc78f98c2 ""
   "images//repr6.png" 1633872086 223912 476c82a5a2d7bb58e5fd3c56b714b405 ""
-  "rapport.aux" 1633895440 2460 498792c7ef545096e75e1ec1f0c24197 "pdflatex"
-  "rapport.tex" 1633895439 3587 3134d3f370e280f2b9d62dcbba5b742a ""
+  "rapport.aux" 1634070530 2726 c23a5cfcb728b9134d04d1b825ec4bc9 "pdflatex"
+  "rapport.tex" 1634070546 5299 7aa10e7d1546b899a39e0fc263cc7031 ""
   (generated)
+  "rapport.pdf"
   "rapport.log"
   "rapport.aux"
-  "rapport.pdf"

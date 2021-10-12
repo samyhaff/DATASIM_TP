@@ -5,12 +5,12 @@ addpath(genpath('tftb-0.2'));
 N = length(x);
 t = 0:1/Fs:(N-1)/Fs;
 
-% subplot(2,1,1);
-% plot(t,x);
-% title('Allure temporelle')
-% xlabel('temps (s)')
-% xlim([0 t(N)])
-% ylabel('Amplitude')
+subplot(2,1,1);
+plot(t,x);
+title('Allure temporelle')
+xlabel('temps (s)')
+xlim([0 t(N)])
+ylabel('Amplitude')
 
 Nh = 513;
 Nf = 8*2^nextpow2(Nh);
@@ -57,4 +57,4 @@ for i = 1:length(ruptures)-1
 end
 
 s = genere_morceau(notes,durees,Fs);
-audiowrite('eliseTest.wav', s, Fs);
+audiowrite('sortie.wav', s, Fs);
