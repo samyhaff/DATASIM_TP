@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+
+\usepackage{preamble}
+
+\title{Transformée discrête en ondelettes : travaux pratiques}
+\author{Yassine Jamoud, Samy Haffoudhi}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+Le but de ce TP est de prendre en main la transformée en ondelettes à l'aide de Matlab et de
+la boîte à outils \texttt{Wavelab}. Nous allons alors commencer par tracer des fonctions ondelettes,
+échelles et une transformée en ondelettes. Nous implémenterons ensuite une procédure de
+"débruitage" basée sur la transformée en ondelettes et enfin nous réaliserons de la compression
+d'images.
+
+\section{Tracé d'ondelettes et de fonctions échelles par DWT inverse}
+
+\begin{enumerate}
+
+    \item{Sous forme informatique la DWT est représentée sous la forme : 
+        $$ \texttt{DWT}(x) = [a_J, d_J, d_{J-1}, \dots, d_1] $$ où $J$ est l'échelle maximale.
+    
+        Ainsi, $\forall j, k$,
+
+        \begin{itemize}
+            \item{Le coefficient $a_J[k]$ est à l'indice k dans la représentation.}
+            \item{Le coefficient $d_j[k]$ est à l'indice $ \frac{N}{2^j} + k  $}
+        \end{itemize}
+    }
+
+\item{ On souhaite construire un vecteur \texttt{DWT x} contenant seulement un coefficient non-nul
+        de détail à la plus grande échelle et situé approximativement au milieu de l'axe temporel.
+
+        On place alors d'après 1. ce coefficient non-nul à l'indice :
+        $ \frac{N}{2^J} + \frac{N}{2^{J+1}} = \frac{3N}{2^{J+1}} $
+
+    \item{}
+
+    \item{}
+
+    \item{}
+
+    \item{}
+
+    \item{}
+
+\end{enumerate}
+
+\section{Débruitage dans l'espace des ondelettes}
+
+\section{Compression d'images}
+
+\section*{Conclusion}
+
+\end{enumerate}
+
+\end{document}
