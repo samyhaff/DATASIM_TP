@@ -53,6 +53,103 @@ d'images.
 
 \section{Débruitage dans l'espace des ondelettes}
 
+\emph{On considèrera dans toute cette partie une ondelette de Haar.}
+
+\begin{enumerate}
+    \item{Créons un signal dont la DWT jusqu'à l'échelle  J = 7 contient
+            uniquement quelques coefficients de détail non nuls.
+
+            Représentons alors le signal obtenu et sa DWT :
+
+            \begin{figure}[H]
+                \caption{Signal et sa DWT}
+                \includegraphics[width=\textwidth]{ex2_1}
+                \centering
+            \end{figure}
+        }
+
+    \item{Ajoutons du bruit au signal obtenu et visualisons ce nouveau
+            signal ainsi que sa FWT :
+
+            \begin{figure}[H]
+                \caption{Signal bruité et sa DWT}
+                \includegraphics[width=\textwidth]{ex2_2}
+                \centering
+            \end{figure}
+
+            On observe ainsi que l'ajout de bruit au signal résulte
+            également en un ajout de bruit à sa DWT. Toutefois on
+            remarque que les nouveaux coefficients non nuls liés au
+            bruit sont d'amplitude faible devant celle des coefficients
+            de la DWT du signal sans bruit.Un filtrage des coefficients
+            à l'aide d'un seuil devrait permettre un débruitage du signal.
+        }
+
+    \item{Mettons maintenant en œuvre le processus de débruitage décrit.
+            Représentons alors l'erreur de construction commise en fonction
+            de la valeur du seuil $\alpha$ et celle correspondant au seuil
+            $\alpha^* = \sigma_b \sqrt{2 ln(N)}$ :
+
+            \begin{figure}[H]
+                \caption{Erreur de reconstruction en fonction de alpha}
+                \includegraphics[width=\textwidth]{ex2_3}
+                \centering
+            \end{figure}
+        }
+
+    \item{On génère les signaux "Blocks" et "Doppler" à l'aide de la
+        fonction \texttt{makesig}.}
+
+    \item{Représentons ces deux signaux ainsi que leur DWT :
+
+            \begin{figure}[H]
+                \caption{Singal "Blocks" et sa DWT}
+                \includegraphics[width=\textwidth]{ex2_4}
+                \centering
+            \end{figure}
+
+            \begin{figure}[H]
+                \caption{Signal "Dopler" et sa DWT}
+                \includegraphics[width=\textwidth]{ex2_5}
+                \centering
+            \end{figure}
+
+            Ajoutons du bruit avec un RSD de 20 dB et appliquons la
+            procédure précédente. On obtient les tracés d'erreur de
+            reconstruction en fonction du seuil suivants :
+
+            \begin{figure}[H]
+                \caption{Erreur de reconstruction en fonction du bruit (Blocks)}
+                \includegraphics[width=\textwidth]{ex2_6}
+                \centering
+            \end{figure}
+
+            \begin{figure}[H]
+                \caption{Erreur de reconstruction en fonction du bruit (Dopler)}
+                \includegraphics[width=\textwidth]{ex2_7}
+                \centering
+            \end{figure}
+        }
+
+    \item{En utilisant maintenant une ondelette de Daubechies d'ordre 4,
+            on obtient les tracés suivants :
+
+            \begin{figure}[H]
+                \caption{Erreur de reconstruction en fonction du bruit (Blocks)}
+                \includegraphics[width=\textwidth]{ex2_6bis}
+                \centering
+            \end{figure}
+
+            \begin{figure}[H]
+                \caption{Erreur de reconstruction en fonction du bruit (Dopler)}
+                \includegraphics[width=\textwidth]{ex2_7bis}
+                \centering
+            \end{figure}
+
+        }
+
+\end{enumerate}
+
 \section{Compression d'images}
 
 \section*{Conclusion}
