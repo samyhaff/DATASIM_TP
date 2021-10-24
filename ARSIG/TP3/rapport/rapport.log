@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.25)  23 OCT 2021 10:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.25)  24 OCT 2021 14:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -309,8 +309,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ./rapport.tex:52: Missing } inserted.
 <inserted text> 
                 }
-l.52 \end{enumerate}
-                    
+l.52     \end{enumerate}
+                        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -367,10 +367,60 @@ File: images//ex2_7bis.png Graphic file (type png)
 Package pdftex.def Info: images//ex2_7bis.png  used on input line 145.
 (pdftex.def)             Requested size: 507.88533pt x 254.10959pt.
  [5 <./images//ex2_7.png (PNG copy)> <./images//ex2_6bis.png (PNG copy)>]
-./rapport.tex:157: Undefined control sequence.
+<images//ex3_1.png, id=46, 2989.1675pt x 1495.5875pt>
+File: images//ex3_1.png Graphic file (type png)
+<use images//ex3_1.png>
+Package pdftex.def Info: images//ex3_1.png  used on input line 166.
+(pdftex.def)             Requested size: 507.88533pt x 254.10959pt.
+<images//ex3_2.png, id=47, 2989.1675pt x 1495.5875pt>
+File: images//ex3_2.png Graphic file (type png)
+<use images//ex3_2.png>
+Package pdftex.def Info: images//ex3_2.png  used on input line 177.
+(pdftex.def)             Requested size: 507.88533pt x 254.10959pt.
+ [6 <./images//ex2_7bis.png (PNG copy)> <./images//ex3_1.png (PNG copy)>]
+<images//ex3_3.png, id=52, 2989.1675pt x 1495.5875pt>
+File: images//ex3_3.png Graphic file (type png)
+<use images//ex3_3.png>
+Package pdftex.def Info: images//ex3_3.png  used on input line 187.
+(pdftex.def)             Requested size: 507.88533pt x 254.10959pt.
+<images//ex3_4.png, id=53, 2989.1675pt x 1495.5875pt>
+File: images//ex3_4.png Graphic file (type png)
+<use images//ex3_4.png>
+Package pdftex.def Info: images//ex3_4.png  used on input line 193.
+(pdftex.def)             Requested size: 507.88533pt x 254.10959pt.
+ [7 <./images//ex3_2.png (PNG copy)> <./images//ex3_3.png (PNG copy)>]
+<images//ex3_5.png, id=57, 3894.55pt x 2004.48875pt>
+File: images//ex3_5.png Graphic file (type png)
+<use images//ex3_5.png>
+Package pdftex.def Info: images//ex3_5.png  used on input line 208.
+(pdftex.def)             Requested size: 507.88533pt x 261.38792pt.
+<images//ex3_6.png, id=58, 3894.55pt x 2004.48875pt>
+File: images//ex3_6.png Graphic file (type png)
+<use images//ex3_6.png>
+Package pdftex.def Info: images//ex3_6.png  used on input line 214.
+(pdftex.def)             Requested size: 507.88533pt x 261.38792pt.
+ [8 <./images//ex3_4.png (PNG copy)> <./images//ex3_5.png (PNG copy)>]
+<images//ex3_7.png, id=62, 3894.55pt x 2004.48875pt>
+File: images//ex3_7.png Graphic file (type png)
+<use images//ex3_7.png>
+Package pdftex.def Info: images//ex3_7.png  used on input line 220.
+(pdftex.def)             Requested size: 507.88533pt x 261.38792pt.
+
+./rapport.tex:225: Missing } inserted.
+<inserted text> 
+                }
+l.225         \end{enumerate}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./rapport.tex:229: Undefined control sequence.
 \enit@endenumerate ->\enit@after 
                                  \endlist \ifx \enit@series \relax \else \if...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -378,10 +428,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@endenumerate ...\else \ifnum \enit@resuming 
                                                   =\@ne \enit@setresumekeys ...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -389,19 +439,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Missing number, treated as zero.
+./rapport.tex:229: Missing number, treated as zero.
 <to be read again> 
                    =
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...xpandafter {\enit@savekeys 
                                                   }\xdef \enit@afterlist {#2...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -409,10 +459,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...it@toks }\ifnum \enit@type 
                                                   =\z@ #3\def \enit@noexcs {...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -420,19 +470,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Missing number, treated as zero.
+./rapport.tex:229: Missing number, treated as zero.
 <to be read again> 
                    =
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 <argument> enit@resume@series@\enit@series 
                                            
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -440,10 +490,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...me@#1}{\csname c@\@listctr 
                                                   \endcsname \the \csname c@...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -451,10 +501,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...e \the \csname c@\@listctr 
                                                   \endcsname }\fi }
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -462,17 +512,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: You can't use `\relax' after \the.
+./rapport.tex:229: You can't use `\relax' after \the.
 <recently read> \c@ 
                     
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 I'm forgetting what you said and using zero instead.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@endenumerate ...t \fi \ifnum \enit@resuming 
                                                   =\thr@@ \enit@setresumekey...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -480,19 +530,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Missing number, treated as zero.
+./rapport.tex:229: Missing number, treated as zero.
 <to be read again> 
                    =
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...xpandafter {\enit@savekeys 
                                                   }\xdef \enit@afterlist {#2...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -500,10 +550,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...it@toks }\ifnum \enit@type 
                                                   =\z@ #3\def \enit@noexcs {...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -511,19 +561,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Missing number, treated as zero.
+./rapport.tex:229: Missing number, treated as zero.
 <to be read again> 
                    =
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...me@#1}{\csname c@\@listctr 
                                                   \endcsname \the \csname c@...
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -531,10 +581,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: Undefined control sequence.
+./rapport.tex:229: Undefined control sequence.
 \enit@setresumekeys ...e \the \csname c@\@listctr 
                                                   \endcsname }\fi }
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -542,47 +592,47 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./rapport.tex:157: You can't use `\relax' after \the.
+./rapport.tex:229: You can't use `\relax' after \the.
 <recently read> \c@ 
                     
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 I'm forgetting what you said and using zero instead.
 
 
-./rapport.tex:157: LaTeX Error: \begin{document} ended by \end{enumerate}.
+./rapport.tex:229: LaTeX Error: \begin{document} ended by \end{enumerate}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./rapport.tex:157: Extra \endgroup.
+./rapport.tex:229: Extra \endgroup.
 <recently read> \endgroup 
                           
-l.157 \end{enumerate}
+l.229 \end{enumerate}
                      
 Things are pretty mixed up, but I think the worst is over.
 
-[6 <./images//ex2_7bis.png (PNG copy)>] (./rapport.aux) ) 
+[9 <./images//ex3_6.png (PNG copy)> <./images//ex3_7.png (PNG copy)>] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 6675 strings out of 478994
- 94738 string characters out of 5864751
+ 6724 strings out of 478994
+ 95592 string characters out of 5864751
  609806 words of memory out of 5000000
- 24084 multiletter control sequences out of 15000+600000
+ 24133 multiletter control sequences out of 15000+600000
  412600 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,6n,88p,518b,424s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on rapport.pdf (7 pages, 861944 bytes).
+Output written on rapport.pdf (10 pages, 3484413 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 118 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1634977016 "rapport.tex" "rapport.pdf" "rapport" 1634977016
+["pdflatex"] 1635076940 "rapport.tex" "rapport.pdf" "rapport" 1635076940
   "/home/samy/Notes/cours/DATASIM_TP/packages/preamble.sty" 1633872612 2477 c6d5fbcf5b36099e78197d8fac795598 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1617738065 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1617738065 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -87,8 +87,15 @@
   "images//ex2_6bis.png" 1634976957 51008 44d4c05590fe107a807301e68111b328 ""
   "images//ex2_7.png" 1634976609 43474 2b4b91770c19b39b2377f3dfa638e49b ""
   "images//ex2_7bis.png" 1634976972 43219 43f7733a61baf4870137ed771d1bbe2d ""
-  "rapport.aux" 1634976823 1540 a3e8e4a00a935943f28eea14424bef05 "pdflatex"
-  "rapport.tex" 1634977015 5276 778b5a9ff4b6df3d768aac35bd19bca5 ""
+  "images//ex3_1.png" 1635017592 301427 5954112104f63fdf0dfbb0f663be5adb ""
+  "images//ex3_2.png" 1635017855 338258 a8f6888dba7a8393a974bcc9970e5f5f ""
+  "images//ex3_3.png" 1635021697 38657 9feca6baa2ffaca0c844e8d6c4339dd2 ""
+  "images//ex3_4.png" 1635021749 32543 8c87ae9e2963526f9d685c296eedc39e ""
+  "images//ex3_5.png" 1635075094 493155 f77179c71662285217ad6c898a1a961b ""
+  "images//ex3_6.png" 1635075111 641324 08ac1c2a20a4231beb860e7287beea23 ""
+  "images//ex3_7.png" 1635075120 769923 9f15ee04a97882bd798a8e070fca1e10 ""
+  "rapport.aux" 1635076920 2741 d1abada59713f075b218528b76093048 "pdflatex"
+  "rapport.tex" 1635076938 8030 ccae1a5a53108fdb9b29c804e5c79cd9 ""
   (generated)
   "rapport.aux"
   "rapport.pdf"
