@@ -11,7 +11,8 @@ N = length(I);
 P = log2(N);
 L = P - J;
 
-h = MakeONFilter('Daubechies',J);
+% h = MakeONFilter('Daubechies',J);
+h = MakeONFilter('Haar');
 DWT_I = FWT2_PO(I,L,h);
 
 im_dwt2(DWT_I,J);

@@ -15,12 +15,22 @@ DWT(N/(2^J)+65) = 4;
 DWT(N/(2^J)+503) = 3.5;
 x = IWT_PO(DWT,L,h);
 
+figure(10)
+plot(x)
+title("Signal")
+ylabel("Amplitude")
+
 [y,sigma] = ajoute_bruit(x,10);
 DWTbruit = FWT_PO(y,L,h);
 % figure(1)
 % plot_dwt(x,DWT,J);
 % figure(2)
 % plot_dwt(y,DWTbruit,J);
+
+figure(11)
+plot(y)
+title("Signal bruité")
+ylabel("Amplitude")
 
 K = 100;
 erreurs = zeros(1,K);
@@ -57,6 +67,16 @@ erreurOpti = sum((xdebruite-x).^2);
 
 xB = MakeSignal('Blocks',N);
 xD = MakeSignal('Doppler',N);
+
+figure(8)
+plot(xB)
+title("Signal Blocks")
+ylabel("Amplitude")
+
+figure(9)
+plot(xD)
+title("Signal Doppler")
+ylabel("Amplitude")
 
 DWTB = FWT_PO(xB,L,h);
 DWTD = FWT_PO(xD,L,h);
@@ -104,20 +124,20 @@ xDdebruite = IWT_PO(DWTDseuil,L,h);
 erreurBOpti = sum((xBdebruite-xB).^2);
 erreurDOpti = sum((xDdebruite-xD).^2);
 
-figure(6)
-plot(seuils,erreursB)
-title("Erreur de reconstruction en fonction de alpha")
-xlabel("alpha")
-ylabel("Erreur de reconstruction")
-xlim([0 K*0.01])
-hold on
-plot(alphaBOpti,erreurBOpti,'x')
+% figure(6)
+% plot(seuils,erreursB)
+% title("Erreur de reconstruction en fonction de alpha")
+% xlabel("alpha")
+% ylabel("Erreur de reconstruction")
+% xlim([0 K*0.01])
+% hold on
+% plot(alphaBOpti,erreurBOpti,'x')
 
-figure(7)
-plot(seuils,erreursD)
-title("Erreur de reconstruction en fonction de alpha")
-xlabel("alpha")
-ylabel("Erreur de reconstruction")
-xlim([0 K*0.01])
-hold on
-plot(alphaDOpti,erreurDOpti,'x')
+% figure(7)
+% plot(seuils,erreursD)
+% title("Erreur de reconstruction en fonction de alpha")
+% xlabel("alpha")
+% ylabel("Erreur de reconstruction")
+% xlim([0 K*0.01])
+% hold on
+% plot(alphaDOpti,erreurDOpti,'x')

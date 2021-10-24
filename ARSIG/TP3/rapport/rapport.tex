@@ -39,15 +39,59 @@ d'images.
             On place alors d'après 1. ce coefficient non-nul à l'indice :
             $ \frac{N}{2^J} + \frac{N}{2^{J+1}} = \frac{3N}{2^{J+1}} $
 
-        \item{}
+        \item{Traçons alors l'allure de la fonction ondelette correspondant à la transformée de 
+                Haar :
 
-        \item{}
+                \begin{figure}[H]
+                    \caption{Fonction ondelette (Haar)}
+                    \includegraphics[width=\textwidth]{ex1_1}
+                    \centering
+                \end{figure}
+            }
 
-        \item{}
+        \item{Représentons les fonctions échelles correspondantes :
 
-        \item{}
+                \begin{figure}[H]
+                    \caption{Fonctions échelles (Haar)}
+                    \includegraphics[width=\textwidth]{ex1_2}
+                    \centering
+                \end{figure}
+            }
 
-        \item{}
+        \setcounter{enumi}{5}
+
+        \item{Répétons la procédure pour les ondelettes de Daubechies d'ordre 4 et 8 :
+
+                \begin{figure}[H]
+                    \caption{Fonction ondelette (Daubechies d'ordre 4)}
+                    \includegraphics[width=\textwidth]{ex1_3}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{Fonctions échelles (Daubechies d'ordre 4)}
+                    \includegraphics[width=\textwidth]{ex1_4}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{Fonction ondelette (Daubechies d'ordre 8)}
+                    \includegraphics[width=\textwidth]{ex1_5}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{Fonctions échelles (Daubechies d'ordre 8)}
+                    \includegraphics[width=\textwidth]{ex1_6}
+                    \centering
+                \end{figure}
+
+            }
+
+        \item{Ainsi, d'après les tracés précédents, la fonction ondelette correspondant à la
+            transformée de Haar est constante par morceaux, celles de Daubechies sont plus
+        complexes mais on retrouve les formes vues en cours, on note notamment la présence des
+    pics.}
 
     \end{enumerate}
 
@@ -62,17 +106,29 @@ d'images.
                 Représentons alors le signal obtenu et sa DWT :
 
                 \begin{figure}[H]
-                    \caption{Signal et sa DWT}
+                    \caption{Signal}
+                    \includegraphics[width=\textwidth]{ex2_1_bis}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{DWT du signal}
                     \includegraphics[width=\textwidth]{ex2_1}
                     \centering
                 \end{figure}
             }
 
         \item{Ajoutons du bruit au signal obtenu et visualisons ce nouveau
-                signal ainsi que sa FWT :
+                signal ainsi que sa DWT :
 
                 \begin{figure}[H]
-                    \caption{Signal bruité et sa DWT}
+                    \caption{Signal bruité}
+                    \includegraphics[width=\textwidth]{ex2_2_bis}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{DWT du signal bruité}
                     \includegraphics[width=\textwidth]{ex2_2}
                     \centering
                 \end{figure}
@@ -95,6 +151,8 @@ d'images.
                     \includegraphics[width=\textwidth]{ex2_3}
                     \centering
                 \end{figure}
+
+                On obtient alors un seuil correspondant à la valeur proposée.
             }
 
         \item{On génère les signaux "Blocks" et "Doppler" à l'aide de la
@@ -103,48 +161,72 @@ d'images.
         \item{Représentons ces deux signaux ainsi que leur DWT :
 
                 \begin{figure}[H]
-                    \caption{Singal "Blocks" et sa DWT}
+                    \caption{Singal "Blocks"}
+                    \includegraphics[width=\textwidth]{ex2_4_bis}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{Singal "Blocks"}
+                    \includegraphics[width=\textwidth]{ex2_5_bis}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{DWT signal "Blocks"}
                     \includegraphics[width=\textwidth]{ex2_4}
                     \centering
                 \end{figure}
 
                 \begin{figure}[H]
-                    \caption{Signal "Dopler" et sa DWT}
+                    \caption{DWT signal "Doppler"}
                     \includegraphics[width=\textwidth]{ex2_5}
                     \centering
                 \end{figure}
+
+                Ces signaux ont bien des allures cohérentes avec leurs noms. Les DWT disposent
+                de plus de coefficients non nuls que pour le signal génèré précédemment
 
                 Ajoutons du bruit avec un RSD de 20 dB et appliquons la
                 procédure précédente. On obtient les tracés d'erreur de
                 reconstruction en fonction du seuil suivants :
 
                 \begin{figure}[H]
-                    \caption{Erreur de reconstruction en fonction du bruit (Blocks)}
+                    \caption{Erreur de reconstruction en fonction du seuil (Blocks)}
                     \includegraphics[width=\textwidth]{ex2_6}
                     \centering
                 \end{figure}
 
                 \begin{figure}[H]
-                    \caption{Erreur de reconstruction en fonction du bruit (Dopler)}
+                    \caption{Erreur de reconstruction en fonction du seuil (Dopler)}
                     \includegraphics[width=\textwidth]{ex2_7}
                     \centering
                 \end{figure}
+
+                On obtient cette fois pour le signal "Blocks" une valeur de seuil optimale différente
+                de celle proposée mais une valeur comparable dans le cas du signal "Doppler".
             }
 
         \item{En utilisant maintenant une ondelette de Daubechies d'ordre 4,
                 on obtient les tracés suivants :
 
                 \begin{figure}[H]
-                    \caption{Erreur de reconstruction en fonction du bruit (Blocks)}
+                    \caption{Erreur de reconstruction en fonction du seuil (Blocks)}
                     \includegraphics[width=\textwidth]{ex2_6bis}
                     \centering
                 \end{figure}
 
                 \begin{figure}[H]
-                    \caption{Erreur de reconstruction en fonction du bruit (Dopler)}
+                    \caption{Erreur de reconstruction en fonction du seuil (Dopler)}
                     \includegraphics[width=\textwidth]{ex2_7bis}
                     \centering
                 \end{figure}
+
+                On remarque ainsi que pour ces deux signaux on obtient de meilleurs résultats
+                en terme d'erreur de reconstruction. Cependant, il convient également de comparer
+                la forme des signaux obtenus afin de vérifier que le signal reconstruit permet
+                aussi de rendre compte des transitions brusques dans le cas du signal "Blocks"
+                par exemple.
 
             }
 
@@ -194,6 +276,9 @@ d'images.
                     \centering
                 \end{figure}
 
+                On remarque que cet histogramme contient beaucoup plus de valeurs faibles que
+                de valeurs élevées et s'apparente à une gaussienne de variance faible.
+
             }
 
         \item{{La procédure de compression consiste en la reconstruction de l'image à partir de sa DWT
@@ -220,11 +305,51 @@ d'images.
                     \includegraphics[width=\textwidth]{ex3_7}
                     \centering
                 \end{figure}
+
+                On remarque alors que cette procédure de compression permet déjà de reconnaitre
+                l'image avec $\tau = 1\%$. Pour $\tau = 20\%$, l'image "différence" n'est pas
+                exactement nulle mais conserver par exemple $20\%$ des coefficients suffit à 
+                obtenir une image quasiment identique à l'originale.
             }
+
+        \item{Avec une ondelette de Haar, on obtient les images suivantes :
+
+                \begin{figure}[H]
+                    \caption{Résultats pour $\tau = 1\%$}
+                    \includegraphics[width=\textwidth]{ex3_8}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{Résultats pour $\tau = 5\%$}
+                    \includegraphics[width=\textwidth]{ex3_9}
+                    \centering
+                \end{figure}
+
+                \begin{figure}[H]
+                    \caption{Résultats pour $\tau = 20\%$}
+                    \includegraphics[width=\textwidth]{ex3_10}
+                    \centering
+                \end{figure}
+
+            }
+
+            On remarque alors que les résultats obtenus avec un filtre générateur de Daubechies
+            do'rdre 4 les résultats sont meilleurs qu'avec une ondelette de Haar. En effet,
+            l'image de différence dans le cas d'une ondelette de Haar est plus riche. On a ainsi
+            annulé des coefficients correspondant à des informations utiles, il faut une valeur
+            de $\tau$ plus élevée que pour le premier cas.
 
         \end{enumerate}
 
         \section*{Conclusion}
+
+        Ainsi, la transformée en ondelettes discrète a plusieurs applications. Elle permet par
+        exemple le débruitage de signaux ou la compression d'images. Ces applications reposent
+        sur le fait que cette transformée laisse généralement place à plusieurs coefficients
+        nuls. Nous avons aussi pu manipuler différents types d'ondelettes (Haar, Daubechies) et
+        comprendre que pour chaque utilisation il convient de choisir attentivement l'ondelette
+        afin d'obtenir de meilleurs résultats.
 
 \end{enumerate}
 
