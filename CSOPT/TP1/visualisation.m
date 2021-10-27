@@ -10,6 +10,8 @@ for n1 = 1:length(x1)
     end
 end
 
+subplot(2,1,1);
 meshc(x1, x2, F);
 L = 100;
+subplot(2,1,2);
 contour(x1, x2, F, L); 
