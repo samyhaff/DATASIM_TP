@@ -15,3 +15,4 @@ meshc(x1, x2, F);
 L = 100;
 subplot(2,1,2);
 contour(x1, x2, F, L); 
+colorbar

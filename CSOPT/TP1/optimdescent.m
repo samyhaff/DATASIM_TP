@@ -9,6 +9,7 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
     %    options.beta : taux de rebroussement
     %    options.tolX, options.tolF, options.tolG, options.maxiter
     %    options.pasInit, valeur du pas initial
+    %    options.lambda, valeur de lambda pour la méthode de levenberg-marquardt
     % x0 : point initial
     % xh : point final
     % result : structure contenant les r?sultats
@@ -34,13 +35,12 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
             d = -g / norm(g);
         elseif isequal(options.method, 'gradient_conjug')
             if k > 1
-                x_old=xval(:,length(xval)-1)
-                x_new=x;
+                x_old = xval(:,length(xval)-1);
+                x_new = x;
                 [y, g_old, h, j] = feval(critfun, x_old, params);
                 [y, g_new, h, j] = feval(critfun, x_new, params);
-                beta=norm(g_new)/norm(g_old);
-                d=-g_new+beta*d;
-
+                beta = (norm(g_new)/norm(g_old))^2;
+                d = -g_new+beta*d;
             else
                d = -g; 
             end
@@ -51,21 +51,20 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
                 x_old=xval(:,length(xval)-1);
                 x_new=x;
                 [y1, g_old, h, j] = feval(critfun, x_old, params);
-           
                 [y2, g_new, h, j] = feval(critfun, x_new, params);
                 s=x_new-x_old;
-                
                 y3=g_new-g_old;
-                
-                
                 B=B-(B*s*s'*B)/(s'*B*s)+(y3*y3')/(y3'*s);
                 d=-inv(B)*g_new;
             else
                 B=norm(g)*eye(length(x));
-                
                 d=-inv(B)*g;
             end
-                
+        elseif isequal(options.method, 'gauss-newton')
+            d = -(j'*j)^-1*g;
+        elseif isequal(options.method, 'levenberg-marquardt')
+            A = j'*j;
+            d = -(A+options.lambda*[A(1,1) 0; 0 A(2,2)])^-1*g;
         else
             error("Methode non reconnue")
         end
@@ -74,8 +73,10 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
         end
         if isequal(options.pas, "fixe")
            alpha = options.pasInit;
-        else
+        elseif isequal(options.pas, "variable")
             alpha = pas(critfun, options.beta, d, options.const, x, options,params);
+        else
+            error("Methode de choix du pas non reconnue")
         end
         xval = [xval, x];
         fval = [fval, y];
@@ -102,10 +103,8 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
     result.iter = k;
     result.crit = fval;
     result.grad = gval;
-    result.temps = 0;
     xh = x;
-    
-    result.temp = toc
+    result.temps = toc;
 end
 
 function alpha = pas(critfun, beta, d, c, x, options,params)
@@ -116,5 +115,4 @@ function alpha = pas(critfun, beta, d, c, x, options,params)
         alpha=beta*alpha;
         [y1, g, h, j] = feval(critfun, x+alpha*d, params);
     end
-    
 end
