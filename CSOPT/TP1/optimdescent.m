@@ -3,7 +3,7 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
     % critfun : nom du fichier .m ?valuant la fonction objectif, son gradient et hessien
     % params : param?tres pour l'?valuation de la fonction objectif
     % options : options n?cessaires pour la mise en oeuvre des algorithmes
-    %    options.method : 'gradient', 'gradient conjuge', 'Newton', 'Quasi-Newton', ...
+    %    options.method : 'gradient', 'gradient conjugue', 'newton', 'Quasi-Newton', ...
     %    options.pas : 'fixe', 'variable'
     %    options.const : constante d'armijo
     %    options.beta : taux de rebroussement
@@ -31,9 +31,9 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
 
     while not(stop)
         [y, g, h, j] = feval(critfun, x, params);
-        if isequal(options.method, 'gradient')
+        if strcmp(options.method, 'gradient')
             d = -g / norm(g);
-        elseif isequal(options.method, 'gradient_conjug')
+        elseif strcmp(options.method, 'gradient_conjugue')
             if k > 1
                 x_old = xval(:,length(xval)-1);
                 x_new = x;
@@ -44,9 +44,9 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
             else
                d = -g; 
             end
-        elseif isequal(options.method, 'Newton')
+        elseif strcmp(options.method, 'newton')
             d=-inv(h)*g;
-        elseif isequal(options.method, 'BFGS')
+        elseif strcmp(options.method, 'BFGS')
             if k>1
                 x_old=xval(:,length(xval)-1);
                 x_new=x;
@@ -60,9 +60,9 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
                 B=norm(g)*eye(length(x));
                 d=-inv(B)*g;
             end
-        elseif isequal(options.method, 'gauss-newton')
+        elseif strcmp(options.method, 'gauss-newton')
             d = -(j'*j)^-1*g;
-        elseif isequal(options.method, 'levenberg-marquardt')
+        elseif strcmp(options.method, 'levenberg-marquardt')
             A = j'*j;
             d = -(A+options.lambda*[A(1,1) 0; 0 A(2,2)])^-1*g;
         else
@@ -71,9 +71,9 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
         if d'*g>0
             d=-d;
         end
-        if isequal(options.pas, "fixe")
+        if strcmp(options.pas, "fixe")
            alpha = options.pasInit;
-        elseif isequal(options.pas, "variable")
+        elseif strcmp(options.pas, "variable")
             alpha = pas(critfun, options.beta, d, options.const, x, options,params);
         else
             error("Methode de choix du pas non reconnue")
