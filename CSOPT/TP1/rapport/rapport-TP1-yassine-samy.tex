@@ -183,9 +183,7 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
                 \caption{Évolution de la norme du gradient}
             \end{figure}
 
-            Nous avons cependant plusieurs problèmes d'affichage de ces graphiques sous Octave
-            (nous n'arrivons par exemple pas à afficher la légende ou à interagir avec les tracés).
-            On observe tout de même que pour ces 4 tracés le critère et le gradient s'annulent
+            On observe que pour ces 4 tracés le critère et le gradient s'annulent
             rapidement pour chaque méthode, il faudrait choisir des valeurs de tolérance plus
             adaptées pour gagner en temps d'exécution, quitte à être légèrement moins précis.
             Pour comparer les performances de chaque méthode représentons le nombre d'itérations
@@ -326,7 +324,7 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
             \end{figure}
     }
     
-    \item{Par la suite on applique les algorithmes vu à l'exercice un pour trouver les paramètres optimauxOn retrouve ainsi les résultats suivants :
+    \item{Par la suite on applique les algorithmes vu à l'exercice 1 pour trouver les paramètres optimaux. On retrouve ainsi les résultats suivants :
     	\begin{figure}[H]
                 \centering
                 \includegraphics[width=0.7\textwidth]{contourExo2GradientVariable.png}
@@ -347,8 +345,9 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
     }
     
     \item{On peut reprendre les valeurs finales dans un tableau en prenant $x_0=[0.5; 2]$:
+
     	\begin{table}[H]
-                \begin{tabularx}{\textwidth}{ l | c | c | r}
+                \begin{tabularx}{\textwidth}{|l|X|X|X|}
                     \hline
                     Méthode & Nombre d'itérations & Temps (s) & Valeur finale \\
                     \hline
@@ -382,8 +381,102 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
 \newpage
 \section{Débruitage d’un signal par minimisation d ’un critère composite}
 
-\newpage
-\section{Inversion numérique d’une transformée de Laplace par optimisation sous contraintes}
+\subsection{Simulation des signaux}
+
+\begin{enumerate}
+
+    \item{
+            Simulons une réalisation du vecteur $x$ similaire au spectre vibrationnel
+            d'une molécule chimique.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{ex3_1}
+                \caption{Signal $x$}
+            \end{figure}
+        }
+
+    \item{
+            Après calcul on obtient une variance égale à $\frac{E_x}{100}$.
+        }
+
+    \item{Le signal en présence de bruit à l'allure suivante :
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{ex3_2}
+                \caption{Signal bruité}
+            \end{figure}
+        }
+
+    \item{Le modèle de mesure peut s'écrire sous la forme $y = Hx + e$ avec $H = I_n$.}
+
+\end{enumerate}
+
+\subsection{Débruitage du signal}
+
+\begin{enumerate}
+
+    \item{Par minimisation d'un critère de moindre carré on obtiendrait une solution
+            égale au signal bruité lui même ce qui n'est pas voulu, il faut introduire
+            un autre critère.
+        }
+
+    \item{D est une matrice bidiagonale composée de 1 sur la diagnoale principale et
+            de -1 sur la diagonale inférieure.
+
+            On a $\nabla f_1(x) = (D + D^T)x$ Or on montre que $D + D^T$ est inversible
+            donc la solution est obtenue pour $x^* = (0, \dots, 0)$ ($f_1$ est à valeurs
+            positives c'est donc bien un minimum).
+        }
+
+    \item{La solution du problème d'optimisation du critère $f_\lambda$ est : 
+
+            $$x^* = (I + \lambda D^T D)^{-1}y$$
+
+            En utilisant une méthode de plus forte pente à pas variable et pour
+            $lambda = 0.5$, on obtient les résultats suivants :
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{ex3_3}
+                \caption{Résultats pour $\lambda = 0.5$}
+            \end{figure}
+        }
+
+    \item{
+            Représentons l'évolution de l'erreur pour différentes valeurs de \lambda :
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{ex3_4}
+                \caption{Évolution de l'erreur en fonction de \lambda}
+            \end{figure}
+
+            En terme d'erreur d'estimation, les meilleurs résultats sont obtenus pour
+            de faibles valeurs de lambda, c'est-à-dire pour un problème de minimisation
+            de $f_0$ plus important que celui de la minimisation de $f_1$, cependant
+            comme précisé en 2. nous n'obtiendrons pas un signal debruité pour ces
+            valeurs de $\lambda$. Il faut prendre en compte les deux contraintes.
+        }
+
+    \item{
+            Traçons les valeurs de $f_0$ en fonction de celles de $f_1$ :
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{ex3_5}
+                \caption{Valeurs de $f_0$ en fonction de celles de $f_1$}
+            \end{figure}
+
+            On peut considérer que la meilleure valeur de $\lambda$ correspond au point 
+            d'intersection de la courbe avec la première bissectrice. En effet, 
+            on accorde dans ce cas la même importance aux deux critères.
+
+            On obtient alors pour valeur optimale : $\lambda = 0.45$.
+        }
+
+\end{enumerate}
 
 \newpage
 
@@ -391,25 +484,49 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
 
     \section{Minimisation de la fonction de Rosenbrock}
 
-   % \subsection{\texttt{rosenbrock.m}}
+    \subsection{\texttt{rosenbrock.m}}
 
-    %\lstinputlisting[language=Matlab]{../rosenbrock.m}
+    \lstinputlisting[language=Matlab]{../rosenbrock.m}
 
-    %\subsection{\texttt{optimdescent.m}}
+    \subsection{\texttt{optimdescent.m}}
 
-    %\lstinputlisting[language=Matlab]{../optimdescent.m}
+    \lstinputlisting[language=Matlab]{../optimdescent.m}
 
-   % \subsection{\texttt{main_tpcsopt_optim1.m}}
+    \subsection{\texttt{main\_tpcsopt\_optim1.m}}
 
-    %\lstinputlisting[language=Matlab]{../main_tpcsopt_optim1.m}
+    \lstinputlisting[language=Matlab]{../main_tpcsopt_optim1.m}
 
-    %\subsection{\texttt{visualisation.m}}
+    \subsection{\texttt{visualisation.m}}
 
-    %\lstinputlisting[language=Matlab]{../visualisation.m}
+    \lstinputlisting[language=Matlab]{../visualisation.m}
 
-    %\subsection{\texttt{comparaison.m}}
+    \subsection{\texttt{comparaison.m}}
 
-    %\lstinputlisting[language=Matlab]{../comparaison.m}
+    \lstinputlisting[language=Matlab]{../comparaison.m}
+
+    \section{Ajustement d'une courbe non-linéaire}
+
+    \subsection{\texttt{capteur.m}}
+
+    \lstinputlisting[language=Matlab]{../capteur.m}
+
+    \subsection{\texttt{visualisation\_2.m}}
+
+    \lstinputlisting[language=Matlab]{../visualisation_2.m}
+
+    \subsection{\texttt{visualisation\_3.m}}
+
+    \lstinputlisting[language=Matlab]{../visualisation_3.m}
+
+    \section{Débruitage d'un signal par minimisation d'un critère composite}
+
+    \subsection{\texttt{ex3.m}}
+
+    \lstinputlisting[language=Matlab]{../ex3.m}
+
+    \subsection{\texttt{critere\_debruitage.m}}
+
+    \lstinputlisting[language=Matlab]{../critere_debruitage.m}
 
 \end{appendices}
 
