@@ -1,0 +1,45 @@
+Méthode : gradient
+Cause de fin : TolF
+xh = (1.14, 2.44)
+Nb iterations : 8968
+Temps : 281.597654
+
+Méthode : gradient_conjugue
+Cause de fin : TolG
+xh = (3750.69, -242.41)
+Nb iterations : 3
+Temps : 0.016374
+
+Méthode : newton
+Cause de fin : Maxiter
+xh = (0.09, 0.04)
+Nb iterations : 10002
+Temps : 73.707351
+
+
+
+==================
+
+newton variable:
+xh = (0.79, 0.54)
+
+gradient variable
+xh = (1.10, 2.08)
+
+gradient fixe
+xh = (1.73, 5.41)
+1002
+maxiter
+2.0239s
+
+BFGS fixe
+xh = (1.15, 2.55)
+ans = 0.3024s
+TolG
+53
+
+BFGS variable
+xh = (1.15, 2.55)
+ans = 0.3853
+39
+TolG

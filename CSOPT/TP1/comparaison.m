@@ -1,7 +1,7 @@
 close all
 clear all
 
-params.fonction='rosenbrock';
+params.fonction='capteur';
 params.b = 2;
 options.maxiter = 10 ^ 4;
 options.tolX = 10 ^ (-8);
@@ -13,7 +13,7 @@ options.beta = 0.75;
 options.const = 10 ^ (-4);
 options.lambda = 0.001;
 
-x0 = [5; 10];
+x0 = [-0.5; 2];
 methodes = {'gradient'; 'gradient_conjugue'; 'newton'; 'BFGS'; 'gauss-newton'; 'levenberg-marquardt'};
 
 % figure(1)

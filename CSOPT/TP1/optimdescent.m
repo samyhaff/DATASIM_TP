@@ -9,7 +9,7 @@ function [xh,result,xval] = optimdescent(critfun,params,options,x0)
     %    options.beta : taux de rebroussement
     %    options.tolX, options.tolF, options.tolG, options.maxiter
     %    options.pasInit, valeur du pas initial
-    %    options.lambda, valeur de lambda pour la méthode de levenberg-marquardt
+    %    options.lambda, valeur de lambda pour la methode de levenberg-marquardt
     % x0 : point initial
     % xh : point final
     % result : structure contenant les r?sultats

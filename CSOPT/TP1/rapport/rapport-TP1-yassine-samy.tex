@@ -291,6 +291,93 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
 
 \newpage
 \section{Ajustement d'une courbe non-linéaire}
+	On cherche à minimiser la fonction objectif :	
+	$$
+		f_0( \alpha,\beta ) =  \frac{ 1}{2}  \sum_{i=1}^{N} ( R_i - \beta E_i^{-\alpha} )^2
+	$$
+\begin{enumerate}
+    \item{
+    	Après calcul, on trouve :
+	$$
+	\nabla f(x) = \left[
+                \begin{array}{c}
+                    \sum_{i=1}^{N} \beta ln(E_i)E_i^{-\alpha} (R_i-\beta E_i^{-\alpha} )\\
+                     - \sum_{i=1}^{N} E_i^{-\alpha} (R_i-\beta E_i^{-\alpha})
+                \end{array}
+            \right]
+	$$
+	
+	$$
+	  \nabla ^2f(x)=\left[
+                \begin{array}{cc}
+                    \sum_{i=1}^{N} \beta E^{-\alpha} ln(E_i)^2 (2\beta E_i^{-\alpha}-R_i) &  \sum_{i=1}^{N} E_i^{-\alpha}ln(E_i) (R_i -2\beta E_i^{-\alpha}) \\
+                    \sum_{i=1}^{N} E_i^{-\alpha}ln(E_i) (R_i -2\beta E_i^{-\alpha}) &  \sum_{i=1}^{N} E_i^{-2\alpha}
+                \end{array}
+            \right]
+	$$
+    }
+    
+    \item{
+    Pour les courbes de niveau, on la trace en echelle log pour $ 0< \alpha < 2$ et $ 0 < \beta <4$
+    	\begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{contourExo2.png}
+                \caption{Courbe de niveau du log-critère}
+            \end{figure}
+    }
+    
+    \item{Par la suite on applique les algorithmes vu à l'exercice un pour trouver les paramètres optimauxOn retrouve ainsi les résultats suivants :
+    	\begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{contourExo2GradientVariable.png}
+                \caption{Convergence pour une direction de plus forte pente avec pas variable}
+            \end{figure}
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{contourExo2NewtonVariable.png}
+                \caption{Convergence pour une direction de Newton avec pas variable}
+            \end{figure}
+            
+             \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{contourExo2Newton.png}
+                \caption{Convergence pour une direction de Newton avec pas fixe}
+            \end{figure}
+    }
+    
+    \item{On peut reprendre les valeurs finales dans un tableau en prenant $x_0=[0.5; 2]$:
+    	\begin{table}[H]
+                \begin{tabularx}{\textwidth}{ l | c | c | r}
+                    \hline
+                    Méthode & Nombre d'itérations & Temps (s) & Valeur finale \\
+                    \hline
+                    Descente de plus forte pente & 1002 & 2 & (1.10, 2.08) \\
+                    \hline
+                    Gradient conjugué & 1002  &  10.7 & (1.11, 2.15)\\
+                    \hline
+                    Newton &  1002 & 5.9 & (0.79, 0.54) \\
+                    \hline
+                    BFGS & 39 & 0.38 & (1.15, 2.55)\\
+                    \hline
+                \end{tabularx}
+            \end{table}
+    }
+    
+    \item{En prenant les différents xh, on obtient la caractéristique théorique  suivante en rouge par rapport à celle de mesure en bleue:
+   	 \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{contourExo2GradientVariableCourbe.png}
+                \caption{Caractéristiques théorique en et expérimentale pour $xh = [1.10, 2.08]$ }
+            \end{figure}
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.7\textwidth]{contourExo2NewtonVariableCourbe.png}
+                \caption{Caractéristiques théorique en et expérimentale pour $xh = [0.79, 0.54]$ }
+            \end{figure}
+        }
+\end{enumerate}
 
 \newpage
 \section{Débruitage d’un signal par minimisation d ’un critère composite}
@@ -304,25 +391,25 @@ Après avoir complété les script \texttt{rosenbrock} et \texttt{visualisation}
 
     \section{Minimisation de la fonction de Rosenbrock}
 
-    \subsection{\texttt{rosenbrock.m}}
+   % \subsection{\texttt{rosenbrock.m}}
 
-    \lstinputlisting[language=Matlab]{../rosenbrock.m}
+    %\lstinputlisting[language=Matlab]{../rosenbrock.m}
 
-    \subsection{\texttt{optimdescent.m}}
+    %\subsection{\texttt{optimdescent.m}}
 
-    \lstinputlisting[language=Matlab]{../optimdescent.m}
+    %\lstinputlisting[language=Matlab]{../optimdescent.m}
 
-    \subsection{\texttt{main_tpcsopt_optim1.m}}
+   % \subsection{\texttt{main_tpcsopt_optim1.m}}
 
-    \lstinputlisting[language=Matlab]{../main_tpcsopt_optim1.m}
+    %\lstinputlisting[language=Matlab]{../main_tpcsopt_optim1.m}
 
-    \subsection{\texttt{visualisation.m}}
+    %\subsection{\texttt{visualisation.m}}
 
-    \lstinputlisting[language=Matlab]{../visualisation.m}
+    %\lstinputlisting[language=Matlab]{../visualisation.m}
 
-    \subsection{\texttt{comparaison.m}}
+    %\subsection{\texttt{comparaison.m}}
 
-    \lstinputlisting[language=Matlab]{../comparaison.m}
+    %\lstinputlisting[language=Matlab]{../comparaison.m}
 
 \end{appendices}
 
