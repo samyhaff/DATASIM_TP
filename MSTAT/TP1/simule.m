@@ -5,9 +5,10 @@ function [y,x] = simule(u,G,T,Te,L,x1)
     D = [0];
     [Ad,Bd,Cd,Dd] = c2dm(A,B,C,D,Te, 'zoh');
       
-    x = [x1];
+    x = [x1'];
+    y = zeros(length(u),1);
     for i = 1:length(u)-1
-       x = [x;  (Ad*x(i,:)'+Bd*u(i))'];
+       x = [x; (Ad*x(i,:)'+Bd*u(i))'];
        y(i) = Cd*x(i,:)'+Dd*u(i);
     end
     n = length(u);
