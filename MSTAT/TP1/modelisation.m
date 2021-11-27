@@ -20,26 +20,44 @@ Texact = 0.02;
 Tfiltre = [0.02, 0.025];
 
 [y,x] = simule(u,Gexact,Texact,Te,L,x1_0);
+figure(1)
+plot(t, u)
+title('entrée du système')
+xlabel('temps (s)')
+ylabel('Amplitude')
+ylim([-0.11 0.11])
+
+figure(2)
+plot(t, y)
+title('Mesure de la position angulaire')
+xlabel('temps (s)')
+
+figure(3)
+plot(t, x(:,2))
+title('Vitesse de rotation')
+xlabel('temps (s)')
 
 for i = 1:2
     xe = kal(y,u,Gfiltre,Tfiltre(i),Te,L,x1_0,P1_0,q);
     xe2 = kal_statique(y,u,Gfiltre,Tfiltre(i),Te,L,x1_0,P1_0,q);
 
-    figure(i)
+    figure(i+3)
     subplot(2,1,1)
     plot(t,y)
     hold on
     plot(t, xe(:,1))
     plot(t, xe2(:,1))
-    plot(t, x(:,1))
-    title('Position')
-    legend('y', 'xe (opti)', 'xe (stat)', 'x')
+    % plot(t, x(:,1))
+    title('Position angulaire')
+    xlabel('temps (s)')
+    legend('y', 'xe (opti)', 'xe (stat)')
 
     subplot(2,1,2)
     plot(t, xe(:,2))
     hold on
     plot(t, xe2(:,2))
     plot(t, x(:,2))
-    title('Vitesse')
+    title('Vitesse de rotation')
+    xlabel('temps (s)')
     legend('xe (opti)', 'xe (stat)', 'x')
 end
