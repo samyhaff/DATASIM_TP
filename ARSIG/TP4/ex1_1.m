@@ -30,6 +30,8 @@ plot(y_true)
 hold on
 plot(x_opti);
 legend('y\_true', 'x\_opti')
+xlabel('n')
+ylabel('Amplitude')
 
 snr1 = 10*log10(norm(y_true)^2/norm(y-y_true)^2);
 snr2 = 10 *log10(norm(y_true)^2/norm(x_opti-y_true)^2);

@@ -26,13 +26,13 @@ for i = 1:6
     options.method = methodes(i);
     [xh,result,xval] = optimdescent(params.fonction,params,options,x0);
 
-    % critere = zeros(result.iter-1);
-    % grad = zeros(result.iter-1);
-    % for i = 1:length(critere)
-    %     [y, g, h, j] = rosenbrock(xval(:,i), params);
-    %     critere(i) = y; grad(i) = norm(g);
-    % end
-    % plot(critere)
+    critere = zeros(result.iter-1);
+    grad = zeros(result.iter-1);
+    for i = 1:length(critere)
+        [y, g, h, j] = rosenbrock(xval(:,i), params);
+        critere(i) = y; grad(i) = norm(g);
+    end
+    plot(critere)
 
     fprintf('Méthode : %s\n', char(options.method))
     fprintf("Cause de fin : %s\n", result.stop)

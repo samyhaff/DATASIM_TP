@@ -11,12 +11,11 @@ function [f,g,h,J] = capteur(x,params)
     f = 0;
     g = [0;0];
     h = zeros(2,2);
-    J = zeros(2,2); % à changer
+    J = zeros(2,2);
     for i=1:length(E)
         f = f + 0.5*(R(i)- x(2)*E(i)^(-x(1)))^2;
         g(1) = g(1) + (R(i)- x(2)*E(i)^(-x(1)))*x(2)*log(E(i))*E(i)^(-x(1));
         g(2) = g(2) - (R(i)- x(2)*E(i)^(-x(1)))*E(i)^(-x(1));
-
         h(1,1) = h(1,1)+ x(2)*log(E(i))  * (  -log(E(i))*E(i)^(-x(1))*(R(i)-x(2)*E(i)^(-x(1)))  +  x(2)*log(E(i))*E(i)^(-x(1))  );
         h(1,2) = h(1,2) + E(i)^(-x(1))*log(E(i))*(R(i)-2*x(2)*E(i)^(-x(1)));
         h(2,1) = h(1,2);
