@@ -14,7 +14,7 @@ Ts   = 1/Fs;
 
 
 %% R peak detection
-[rPeak, rPeak_BP, rPeak_MA] = ecgRPeakDetector(x, 25, 125, 149, 0, Fs);
+[rPeak, rPeak_BP, rPeak_MA] = ecgRPeakDetector(x, 25, 125, 149, 60, Fs);
 
 
 %% Epoching each beat

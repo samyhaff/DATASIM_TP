@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.24)  15 DEC 2021 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.24)  17 DEC 2021 13:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -351,77 +351,92 @@ File: images//fig2.png Graphic file (type png)
 Package pdftex.def Info: images//fig2.png  used on input line 39.
 (pdftex.def)             Requested size: 507.88533pt x 227.08821pt.
  [1 <./images//fig1.png (PNG copy)>]
-File: images//fig2.png Graphic file (type png)
-<use images//fig2.png>
-Package pdftex.def Info: images//fig2.png  used on input line 55.
+<images//fig3.png, id=17, 1376.0208pt x 615.2586pt>
+File: images//fig3.png Graphic file (type png)
+<use images//fig3.png>
+Package pdftex.def Info: images//fig3.png  used on input line 55.
 (pdftex.def)             Requested size: 507.88533pt x 227.08821pt.
- [2 <./images//fig2.png (PNG copy)>]
-<images//fig4.png, id=20, 1376.0208pt x 615.2586pt>
+ [2 <./images//fig2.png (PNG copy)> <./images//fig3.png (PNG copy)>]
+<images//fig4.png, id=21, 1376.0208pt x 615.2586pt>
 File: images//fig4.png Graphic file (type png)
 <use images//fig4.png>
-Package pdftex.def Info: images//fig4.png  used on input line 87.
+Package pdftex.def Info: images//fig4.png  used on input line 90.
 (pdftex.def)             Requested size: 203.15489pt x 90.82965pt.
-<images//fig5.png, id=21, 1376.0208pt x 615.2586pt>
+<images//fig5.png, id=22, 1376.0208pt x 615.2586pt>
 File: images//fig5.png Graphic file (type png)
 <use images//fig5.png>
-Package pdftex.def Info: images//fig5.png  used on input line 93.
+Package pdftex.def Info: images//fig5.png  used on input line 96.
 (pdftex.def)             Requested size: 203.15489pt x 90.82965pt.
 
-Overfull \hbox (2.61047pt too wide) in paragraph at lines 85--97
+Overfull \hbox (2.61047pt too wide) in paragraph at lines 88--100
 []$[]$ $[]$ 
  []
 
 
-./rapport.tex:98: LaTeX Error: There's no line here to end.
+./rapport.tex:101: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.98 \newline
-             
+l.101 \newline
+              
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<images//fig6.png, id=22, 1376.0208pt x 615.2586pt>
+<images//fig6.png, id=23, 1376.0208pt x 615.2586pt>
 File: images//fig6.png Graphic file (type png)
 <use images//fig6.png>
-Package pdftex.def Info: images//fig6.png  used on input line 102.
+Package pdftex.def Info: images//fig6.png  used on input line 105.
 (pdftex.def)             Requested size: 203.15489pt x 90.82965pt.
-<images//fig7.png, id=23, 1376.0208pt x 615.2586pt>
+<images//fig7.png, id=24, 1376.0208pt x 615.2586pt>
 File: images//fig7.png Graphic file (type png)
 <use images//fig7.png>
-Package pdftex.def Info: images//fig7.png  used on input line 108.
+Package pdftex.def Info: images//fig7.png  used on input line 111.
 (pdftex.def)             Requested size: 203.15489pt x 90.82965pt.
 
-Overfull \hbox (2.61047pt too wide) in paragraph at lines 100--112
+Overfull \hbox (2.61047pt too wide) in paragraph at lines 103--115
 []$[]$ $[]$ 
  []
 
-<images//fig8.png, id=24, 1376.0208pt x 615.2586pt>
+<images//fig8.png, id=25, 1376.0208pt x 615.2586pt>
 File: images//fig8.png Graphic file (type png)
 <use images//fig8.png>
-Package pdftex.def Info: images//fig8.png  used on input line 129.
+Package pdftex.def Info: images//fig8.png  used on input line 132.
 (pdftex.def)             Requested size: 507.88533pt x 227.08821pt.
-[3 <./images//fig4.png (PNG copy)> <./images//fig5.png (PNG copy)> <./images//fig6.png (PNG copy)> <./images//fig7.png (PNG copy)>] [4 <./images//fig8.png (PNG copy)>] (./rapport.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[3 <./images//fig4.png (PNG copy)> <./images//fig5.png (PNG copy)> <./images//fig6.png (PNG copy)> <./images//fig7.png (PNG copy)>]
+<images//fig9.png, id=40, 1376.0208pt x 615.2586pt>
+File: images//fig9.png Graphic file (type png)
+<use images//fig9.png>
+Package pdftex.def Info: images//fig9.png  used on input line 161.
+(pdftex.def)             Requested size: 507.88533pt x 227.08821pt.
+ [4 <./images//fig8.png (PNG copy)>]
+<images//fig10.png, id=44, 1376.0208pt x 615.2586pt>
+File: images//fig10.png Graphic file (type png)
+<use images//fig10.png>
+Package pdftex.def Info: images//fig10.png  used on input line 184.
+(pdftex.def)             Requested size: 507.88533pt x 227.08821pt.
+ [5 <./images//fig9.png (PNG copy)> <./images//fig10.png (PNG copy)>]
+<images//fig11.png, id=48, 1376.0208pt x 615.2586pt>
+File: images//fig11.png Graphic file (type png)
+<use images//fig11.png>
+Package pdftex.def Info: images//fig11.png  used on input line 203.
+(pdftex.def)             Requested size: 507.88533pt x 227.08821pt.
+ [6 <./images//fig11.png (PNG copy)>] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 8546 strings out of 478994
- 125141 string characters out of 5864750
+ 8574 strings out of 478994
+ 125615 string characters out of 5864750
  636625 words of memory out of 5000000
- 25913 multiletter control sequences out of 15000+600000
+ 25941 multiletter control sequences out of 15000+600000
  423048 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,8n,91p,518b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on rapport.pdf (5 pages, 719014 bytes).
+Output written on rapport.pdf (7 pages, 1765006 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

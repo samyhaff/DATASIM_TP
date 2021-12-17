@@ -52,7 +52,7 @@ Représentons le spectrogramme pour trois choix différents de taille de fenêtr
 
 \begin{figure}[H]
     \caption{Spectrogramme de l'ECG}
-    \includegraphics[width=\textwidth]{fig2}
+    \includegraphics[width=\textwidth]{fig3}
     \centering
 \end{figure}
 
@@ -61,6 +61,9 @@ En effet, pour une fenêtre plus courte, d'une durée de 150ms, on observe un é
 pour une durée plus importante, 2s, on a cette fois un étalement moins important en fréquences.
 Cette dualité temps-fréquence nécessite alors un choix de paramètre adapté à l'information
 recherchée sur le spectrogramme.
+Par ailleurs, pour la fenêtre de durée 15s on peut observer clairement un spectre des raies mais de
+fréquence variant légèrement en fonction du temps car le signal n'est pas parfaitement
+périodique/
 
 \subsection{R peak detection}
 
@@ -70,9 +73,9 @@ Le processus de détection des pics R repose sur l'utilisation de plusieurs filt
 
 \begin{itemize}
     \item{Un filtre passe-bas : $H(z) = \frac{(1-z^{-n})^2}{(1-z^{-1})^2}$ avec
-        $n = \frac{F_s}{F_c} = \frac{1000}{40} = 25$}
+        $n = \frac{F_s}{F_c} = \frac{1000}{40} = 25$, n impair pour avoir un retard entier}
     \item{Un filtre passe-haut : $H(z) = nz^{-\frac{n-1}{2}} - \frac{1-z^{-1}}{1-z^{-1}}$
-        avec $n = \frac{F_s}{F_c} =\frac{1000}{8} = 125$.}
+        avec $n = \frac{F_s}{F_c} =\frac{1000}{8} = 125$, n impair pour avoir un retard entier.}
     \item{Un filtre dérivateur}
     \item{Un filtre MA : $H(z) = \frac{1}{n} \frac{1-z^{-n}}{1-z^{-1}}$ avec 
             $n = 149$. En effet, pour $F_s$ = 200 Hz, les auteurs de l'article ont $n = 30$,
@@ -148,10 +151,77 @@ d'obtenir des résultats satisfaisants sur un ECG sain.
 
 \subsection{Spatial filtering: $\pi$CA}
 
+On commence par filtre les données afin de retirer la ligne de base. On choisit une
+fréquence de coupure $f_c$ = 40 Hz et on a alors $N = \frac{1000}{40} = 25$.
+
+En implémentant les différnts algorithmes, on obtient les résultats suivants :
+
+\begin{figure}[H]
+    \caption{Résultats des algorithmes}
+    \includegraphics[width=\textwidth]{fig9}
+    \centering
+\end{figure}
+
+On observe alors que :
+
+\begin{itemize}
+    \item{On a pu séparer les deux ECG dans la majorité des cas.}
+    \item{Pour le premier canal, où les données semblent le plus bruité, l'algorithme
+            PiCA n'a pas permis de séparer les deux ECG.}
+    \item{Pour le canal 4, c'est l'algorithme PCA qui fournit cette fois le moins bon
+            résultat en amplifiant le bruit.}
+    \item{L'algorithme ICA est le moins performant sur le canal 2 puisqu'il 
+            amplifie le bruit.}
+\end{itemize}
+
+Ainsi, aucun des algorithmes n'apparait clairement comme plus efficace que les autres,
+les résultats dépendent des données en entrée.
+
+Restregnons nous maintenant aux deux premiers canaux et affichant les résultats :
+
+\begin{figure}[H]
+    \caption{Résultats des algorithmes}
+    \includegraphics[width=\textwidth]{fig10}
+    \centering
+\end{figure}
+
+On voit que les résultats pour les algorithmes PCA et ICA sont moins bons que lorsqu'on
+disposait des données des 4 capteurs. Par exemple pour le canal 2, le bruit est amplifié
+par l'algorithme PCA, ce qui n'était pas le cas précédemment.
+
 \subsection{ECG denoising by extended Kalman filtering}
+
+Le principe de cette dernière méthode est à partir de données bruitées et d'un modèle
+d'observation, non forcement linéaire, obtenir de meilleures données.
+
+Appliquons maintenant la méthode du filtre de Kalman étendu.
+On choisit de considèrer les données du 4ème canal contenant l'ECG du fœtus. 
+On obtient les résultats suivants :
+
+\begin{figure}[H]
+    \caption{Résultats du filtre de Kalman étendu}
+    \includegraphics[width=\textwidth]{fig11}
+    \centering
+\end{figure}
+
+On observe que pour les 4 canaux, c'est l'ECG de la mère qui est extrait et non pas
+celui du fœtus. Ce qui peut laisser penser à une erreur d'implémentation de notre part. 
 
 \section*{Conclusion}
 
-Ainsi,
+Ainsi, lors de TP nous avons pu mettre en œuvre différents algorithmes permettant l'analyse
+de signaux ECG. Tout d'abord lors de la première partie, nous avons pu observer différentes
+propriétés des signaux ECG à l'aide du tracé spectre et du spectrogramme, telles que la quasi-périodicité. 
+Nous avons alors par la suite, pu implémenter
+un processus permettant la détection de pics R à l'aide de l'utilisation de différents
+filtres. Ce processus simple permet toutefois d'obtenir de très bons résultats. Ensuite, nous
+avons implémenté les algorithmes $\pi$CA, PCA et ICA pour réaliser l'extraction de l'ECG d'un
+fœtus. On a alors observé qu'aucun des algorithmes ne semble se démarquer et qu'il convient
+de tous les tester sur les données pour choisir celui fournissant le meilleur résultat. Aussi,
+l'algorithme $\pi$CA a fourni de meilleurs résultats lors de l'utilisation des 4 canaux 
+qu'uniquement 2 de ces canaux. Enfin, la méthode du filtre de Kalman étendu permet
+de bien éliminer le bruit et d'obtenir un signal ECG clair en sortie mais dans notre cas,
+les résultats obtenus ne sont pas satisfaisants puisqu'ils ne correspondent pas à l'ECG
+du fœtus.
 
 \end{document}
