@@ -15,7 +15,7 @@
 Le but de ce TP est d'extraire un ECG fœtal à partir de mesures issues de capteurs abdominaux.
 Nous allons commencer par l'analyse et la détection de pics R d'un ECG sain. Puis nous 
 passerons à l'extraction d'un ECG fœtal en implémentant deux méthodes complémentaires : 
-le filtrage spatial par PCA (periodic component analysis ) et le filtre de Kalman étendu.
+le filtrage spatial par PCA (periodic component analysis) et le filtre de Kalman étendu.
 
 \section{Healthy ECG signal analysis}
 
@@ -59,11 +59,11 @@ Représentons le spectrogramme pour trois choix différents de taille de fenêtr
 On peut observer l'influence de la taille de la fenêtre sur l'allure du spectrogramme obtenu.
 En effet, pour une fenêtre plus courte, d'une durée de 150ms, on observe un étalement en fréquences tandis que
 pour une durée plus importante, 2s, on a cette fois un étalement moins important en fréquences.
-Cette dualité temps-fréquence nécessite alors un choix de paramètre adapté à l'information
+Cette dualité temps-fréquence impose alors un choix de paramètre adapté à l'information
 recherchée sur le spectrogramme.
 Par ailleurs, pour la fenêtre de durée 15s on peut observer clairement un spectre des raies mais de
 fréquence variant légèrement en fonction du temps car le signal n'est pas parfaitement
-périodique/
+périodique.
 
 \subsection{R peak detection}
 
@@ -84,7 +84,7 @@ Le processus de détection des pics R repose sur l'utilisation de plusieurs filt
 
 Représentons les réponses des différents filtres :
 
-\begin{figure}
+\begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.8\linewidth]{fig4}  
@@ -189,24 +189,6 @@ On voit que les résultats pour les algorithmes PCA et ICA sont moins bons que l
 disposait des données des 4 capteurs. Par exemple pour le canal 2, le bruit est amplifié
 par l'algorithme PCA, ce qui n'était pas le cas précédemment.
 
-\subsection{ECG denoising by extended Kalman filtering}
-
-Le principe de cette dernière méthode est à partir de données bruitées et d'un modèle
-d'observation, non forcement linéaire, obtenir de meilleures données.
-
-Appliquons maintenant la méthode du filtre de Kalman étendu.
-On choisit de considèrer les données du 4ème canal contenant l'ECG du fœtus. 
-On obtient les résultats suivants :
-
-\begin{figure}[H]
-    \caption{Résultats du filtre de Kalman étendu}
-    \includegraphics[width=\textwidth]{fig11}
-    \centering
-\end{figure}
-
-On observe que pour les 4 canaux, c'est l'ECG de la mère qui est extrait et non pas
-celui du fœtus. Ce qui peut laisser penser à une erreur d'implémentation de notre part. 
-
 \section*{Conclusion}
 
 Ainsi, lors de TP nous avons pu mettre en œuvre différents algorithmes permettant l'analyse
@@ -214,14 +196,11 @@ de signaux ECG. Tout d'abord lors de la première partie, nous avons pu observer
 propriétés des signaux ECG à l'aide du tracé spectre et du spectrogramme, telles que la quasi-périodicité. 
 Nous avons alors par la suite, pu implémenter
 un processus permettant la détection de pics R à l'aide de l'utilisation de différents
-filtres. Ce processus simple permet toutefois d'obtenir de très bons résultats. Ensuite, nous
+filtres. Ce processus simple permet toutefois d'obtenir de bons résultats. Ensuite, nous
 avons implémenté les algorithmes $\pi$CA, PCA et ICA pour réaliser l'extraction de l'ECG d'un
 fœtus. On a alors observé qu'aucun des algorithmes ne semble se démarquer et qu'il convient
 de tous les tester sur les données pour choisir celui fournissant le meilleur résultat. Aussi,
 l'algorithme $\pi$CA a fourni de meilleurs résultats lors de l'utilisation des 4 canaux 
-qu'uniquement 2 de ces canaux. Enfin, la méthode du filtre de Kalman étendu permet
-de bien éliminer le bruit et d'obtenir un signal ECG clair en sortie mais dans notre cas,
-les résultats obtenus ne sont pas satisfaisants puisqu'ils ne correspondent pas à l'ECG
-du fœtus.
+que pour uniquement 2 de ces canaux, on obtient de meilleurs résultats en utilisant plus de données.
 
 \end{document}

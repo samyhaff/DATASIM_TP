@@ -525,10 +525,6 @@ INPUT ./images//fig10.png
 INPUT images//fig10.png
 INPUT ./images//fig10.png
 INPUT ./images//fig10.png
-INPUT ./images//fig11.png
-INPUT images//fig11.png
-INPUT ./images//fig11.png
-INPUT ./images//fig11.png
 INPUT rapport.aux
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
