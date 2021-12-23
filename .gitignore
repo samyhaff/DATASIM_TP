@@ -2,3 +2,6 @@ octave-workspace
 .ipynb_checkpoints/
 .DS_Store
 *.asv
+*.jpg
+*.png
+*.tif
