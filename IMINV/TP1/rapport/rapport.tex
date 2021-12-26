@@ -1,0 +1,126 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+
+\usepackage{preamble}
+
+\title{Egalisation des gains de détecteurs CCD en imagerie satellitaire}
+\author{Yassine Jamoud, Samy Haffoudhi}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+Dans ce TP, l'objectif est d'étudier l’estimation des réponses des détecteurs de façon non supervisée, c’est-à-dire seulement à partir des images observées. On adoptera le modèle suivant : 
+$$
+	W_{m,n}=g_nZ_{m,n}
+$$
+avec $g_n$ le gain de la colonne n, $W_{m,n}$ le pixel mesurée en ligne m et colonne n, et $Z_{m,n}$ le pixel
+idéal. Pour simplifier les calculs, on adoptera le modèle logarithmique : 
+$$
+	ln W_{m,n} = ln Z_{m,n} + ln g_n
+$$
+On utilisera alors la notation : $V_{m,n} = Y_{m,n} +f_n$
+\section{Partie Théorique}
+La partie théorique a été corrigée en cours et une correction a été donné.
+
+
+
+
+\section{Partie Pratique}
+
+\begin{enumerate}
+	\item{Commençons par simuler une image observée $W$ à partir de l'image $Z$ et des gains $g$ fournis. 
+	\begin{figure}[H]
+     		\centering
+    		\begin{subfigure}[H]{0.4\textwidth}
+         		\centering
+         		\includegraphics[width=\textwidth]{imageZ}
+         		\caption{Image idéal Z}
+    		\end{subfigure}
+     		\hfill
+    	 	\begin{subfigure}[H]{0.4\textwidth}
+         		\centering
+         		\includegraphics[width=\textwidth]{imageW}
+         		\caption{Image simulée W}
+     		\end{subfigure}
+	\end{figure}
+	On peut alors afficher la différence pour se rendre bien compte de l'effet de colonage.
+	\begin{figure}[H]
+    		\includegraphics[width=0.6\textwidth]{imageW-Z}
+    		\centering
+		\caption{Différences W et Z}
+	\end{figure}
+	Pour la méthode $0$ qui consiste à ne pas corriger l'image, on peut calculer la $RMSE$ des gains - $f_0$ soit tout simplement de $f_0$. Pour la méthode $1$, il s'agit tout simplement d'utiliser la $RMSE$ des vraies gains centrés et d'un estimateur du gain centré. Ici on choisit d'après la question 1, la moyenne des intensités $V$.
+	}
+	\item{On peut alors tracer ces gains estimés par la méthode $1$ en fonction des vraies gains.
+	\begin{figure}[H]
+    		\includegraphics[width=0.7\textwidth]{methode1}
+    		\centering
+		\caption{methode 1}
+	\end{figure}
+	Traçons également l'erreur d'estimation et le module de la transformée de Fourrier :
+	\begin{figure}[H]
+     		\centering
+    		\begin{subfigure}[H]{0.45\textwidth}
+         		\centering
+         		\includegraphics[width=\textwidth]{erreur1}
+         		\caption{Image idéal Z}
+    		\end{subfigure}
+     		\hfill
+    	 	\begin{subfigure}[H]{0.45\textwidth}
+         		\centering
+         		\includegraphics[width=\textwidth]{fourrier}
+         		\caption{Image simulée W}
+     		\end{subfigure}
+	\end{figure}
+	On remarque à l'aide des valeurs de gains réels et estimés que la méthode est bonne pour détecter les petites variations. En revanche les variations de plus faible fréquence sont très mauvaise. De même dans la transformée de Fourrier on retrouve beaucoup de basse fréquences et ce n'est pas proche d'un bruit blanc. Le problème étant que le nombre de données est clairement insuffisant pour mesurer proprement les hautes fréquences et les basses fréquences. En effet on a un paysage avec beaucoup de variations donc les hautes fréquences sont assez simple a retrouver. En revanche les basses fréquences sont difficile à récupérer en utilisant cette moyenne sur un faible nombre de pixels.
+	}
+	\item{}Mettons en œuvre la méthode $2$. On utilise donc la médiane $\hat{\delta f_n}$ de $\delta v_{1n}, \ ...\ \delta v_{Mn}$ . On peut alors centrer et afficher les gains de la méthode 2 $\hat{f_n} = \sum_{l=2}n\hat{\delta f_n}$
+	\begin{figure}[H]
+    		\includegraphics[width=0.7\textwidth]{methode2}
+		    		\centering
+		\caption{methode 2}
+	\end{figure}
+	Ensuite mettons en œuvre les solutions $MAP$ des questions 5 et 6. On utilse notamment les fonctions $spdiags$ pour coder D et $speye$ pour utiliser le codage creux. Pour la méthode $3$, on utilise la solution $\hat{f_n}=(D^tD+\mu I)^{-1}D^tDs$ avec $s=\sum_m v_m/M$. Pour la méthode 4, on utilisera la fonction $MAPL1$ pour résoudre le système $min J(f) = \sum_m ||D(v_m-f)||_1+ \mu || f||_2^2$.
+	\item{Pour les deux solutions MAP, on choisit de tracer l'erreur en fonction de plusieurs $\mu$ pour choisir de manière optimale le bon paramètre.
+	\begin{figure}[H]
+    		\includegraphics[width=0.7\textwidth]{lambda3}
+    		\centering
+		\caption{différentes valeurs d'erreur pour plusieurs paramètres méthode 3}
+	\end{figure}
+	Matlab nous renvoie pour la méthode 3 une valeur de $\mu=0.4394$
+	Pour la méthode 4, on retrouve :
+	\begin{figure}[H]
+    		\includegraphics[width=0.7\textwidth]{lambda4}
+    		\centering
+		\caption{différentes valeurs d'erreur pour plusieurs paramètres méthode 4}
+	\end{figure}
+	Matlab nous renvoie pour la méthode 4 une valeur de $\mu=2484.8$
+	On peut donc tracer pour ces paramètres les valeurs de gains des méthodes 3 et 4 :
+	\begin{figure}[H]
+    		\includegraphics[width=0.7\textwidth]{gain34}
+    		\centering
+		\caption{valeurs de gains pour la méthode 3 et la méthode 4}
+	\end{figure}
+	}
+	\item{On peut alors comparer les 4 méthodes : 
+	\begin{figure}[H]
+    		\includegraphics[width=0.9\textwidth]{all}
+    		\centering
+		\caption{Valeurs de gains de toutes les méthodes }
+	\end{figure}
+	On remarque que les méthodes 3 et 4 sont clairement plus performantes que les méthodes 1 et 2. La méthode 4 est sensiblement meilleur mais le temps de calcul est beaucoup plus long.
+	}
+\end{enumerate}
+
+\pagebreak
+
+\begin{appendices}
+  \section{Codes des méthodes d'estimation}
+    \lstinputlisting[language=Matlab]{../main.m}
+\end{appendices}
+  
+
+
+\end{document}

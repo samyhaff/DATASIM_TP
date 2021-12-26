@@ -1,0 +1,141 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+
+\usepackage{preamble}
+
+\title{Déconvolution de trains d’impulsions. Application au controle non destructif par ultrasons}
+\author{Yassine Jamoud, Samy Haffoudhi}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+Dans ce TP, l'objectif est d'analyser un objet à l'aide de signaux ultrasons. La séquence de réflectivité $x$ sera un singal parcimonieux où chaque pics correspond à un changement d'impédances. L'objectif est de détecter ces pics efficacement. Pour se faire, on considère que notre signal reçu $y$, est la convolution du singal recherché $x$ avec la réponse impulsionelle $h$ du transducteurs avec une incertitude comportant entre autre le bruit de mesure et les erreurs de modélisation. On adopte donc le modèle :
+$$
+y=x\ast h + incertitudes
+$$
+
+\section{Modèle Direct}
+Simulons le problème en utilisant un exemple de réponse impulsionnelle. On adopte ici le modèle matriciel
+$$
+z=Hx+b
+$$
+Pour simuler le problème efficacement on utilise la convolution de matlab, qui nous évite d'utiliser de grosse matrice dans l'algorithme. On peut alors générer un signal $z$ avec un rapport signal sur bruit donné.
+	\begin{figure}[H]
+     		\centering
+    		\begin{subfigure}[H]{0.45\textwidth}
+         		\centering
+         		\includegraphics[width=\textwidth]{direct1}
+         		\caption{Simulation d'un problème direct avec $RSB_{dB}=10dB$}
+    		\end{subfigure}
+     		\hfill
+    	 	\begin{subfigure}[H]{0.45\textwidth}
+         		\centering
+         		\includegraphics[width=\textwidth]{direct2}
+         		\caption{Simulation d'un problème direct avec $RSB_{dB}=40dB$}
+     		\end{subfigure}
+	\end{figure}
+
+\section{Déconvolution par pénalisation $l_1$}
+	\begin{enumerate}
+		\item{Commençons par utliser naïvement la solution des moindres carrés $\hat{x_{MC}}=(H^TH)^{-1}H^Tz$.
+		\begin{figure}[H]
+    			\includegraphics[width=0.4\textwidth]{mc1}
+		    	\centering
+			\caption{Simulation avec un rapport signal sur bruit infini}
+		\end{figure}
+		Pour un rapport signal sur bruit infini, le bruit est quasiment inexistant. La solution des moindres carrés fonctionne donc bien :
+		\begin{figure}[H]
+    			\includegraphics[width=0.7\textwidth]{mc2}
+		    	\centering
+			\caption{Solution des moindres carrés avec un rapport signal sur bruit infini}
+		\end{figure}
+		On retrouve effectivement un signal $z$ identique au signal $x$.
+		}
+		\item{Utilisons maintenant un $RSB_{dB}$ très bon.
+		\begin{figure}[H]
+    			\includegraphics[width=0.7\textwidth]{direct2}
+		    	\centering
+			\caption{Simulation avec un rapport signal sur bruit de $40dB$}
+		\end{figure}
+		Cette fois-ci la solution des moindres carrés est catastrophique :
+		\begin{figure}[H]
+    			\includegraphics[width=0.7\textwidth]{mc3}
+		    	\centering
+			\caption{Solution des moindres carrés avec un rapport signal sur bruit de $40dB$}
+		\end{figure}
+		En effet, $z=Hx+b$ et $\hat{x_{MC}}=(H^TH)^{-1}H^Tz$. \\
+		Si on injecte $z$ on retrouve :
+		$$
+		\hat{x_{MC}}=(H^TH)^{-1}H^T(Hx+b)=x+(H^TH)^{-1}H^Tb
+		$$
+		Le bruit est donc multiplier par un facteur très grand devant lui. En effet, $H$ étant mal conditionnée, les valeurs propres de $H^TH$ sont très petite, donc l'inverse fournit de très grande valeurs propres.
+		}
+		\item{
+		On pénalise donc la solution des moindres carrés par norme $l_1$:
+		$$
+		\hat{x} \ \ minimise \ \ J(x) = \frac{1}{2}|| z-Hx ||^2+ \mu \sum_{m=1}^M|x_m|
+		$$
+		On utilise l'algorithme $ISTA$ car la non-differentiabilité en $0$ ne permet pas d'avoir de solution analytique.
+		}
+		\item{$C$ est la plus grande valeur propre de de $H^TH$. On utilise donc $max(eig(H^TH))$ pour obtenir une valeur.}
+		\item{
+		Évaluons les performances de cette algorithme. Empiriquement, on choisit $\mu=0.01$. On retrouve alors les resultats suivant:
+		\begin{figure}[H]
+    			\includegraphics[width=0.7\textwidth]{ista40}
+		    	\centering
+			\caption{Solution de l'algorithme ISTA avec un rapport signal sur bruit de $40dB$}
+		\end{figure}
+		\begin{figure}[H]
+    			\includegraphics[width=0.7\textwidth]{ista20}
+		    	\centering
+			\caption{Solution de l'algorithme ISTA avec un rapport signal sur bruit de $20dB$}
+		\end{figure}
+		\begin{figure}[H]
+    			\includegraphics[width=0.7\textwidth]{ista10}
+		    	\centering
+			\caption{Solution de l'algorithme ISTA avec un rapport signal sur bruit de $10dB$}
+		\end{figure}
+		Pour une presence de bruit presque nul ou très bonne, on arrive à obtenir un resultat très correct. Seul les pics vraiment proche posent un problèmes car ils sont associés comme un seul pics. Pour un rapport singal sur bruit moyen, on commence à voir apparaître des fausses valeurs due au bruit.
+		}
+	\end{enumerate}
+\pagebreak
+\section{Mesures d'épaisseurs de plaques par ultrasons}
+	Mettons en oeuvre nos solution sur des signaux réels
+	\begin{enumerate}
+		\item{Pour le signal $z_1$, les pics sont assez éloignés pour mesurer l'epaisseur de la plaque sans déconvoluer le signal. L'avantage de ce genre de signal est de pouvoir extraire $h$, la réponse impulsionnelle très facilement en récupérant le bon nombre de points.
+		\begin{figure}[H]
+    			\includegraphics[width=0.6\textwidth]{z1}
+		    	\centering
+			\caption{Déconvolution du signal $z_1$ avec $\mu=1$}
+		\end{figure}
+		On retrouve un intervalle temporelle entre deux pics d'environs $1206$ points. La fréquence d'échantillonnage étant de $100MHz$, cela correspond à un intervalle de $\delta t=1.2*10^{-5}s$. La vitesse du son dans l'aluminium étant de $v=6380m.s^{-1}$, la distance parcourue est donc $d=\delta t*v=0.077m$. Ainsi l'epaisseur de la plaque est de $3.85cm$.
+		}
+		\item{Pour une plaque plus fine, on retrouve la deconvolution suivante : 
+		\begin{figure}[H]
+    			\includegraphics[width=0.6\textwidth]{z2}
+		    	\centering
+			\caption{Déconvolution du signal $z_1$ avec $\mu=1$}
+		\end{figure}
+		Encore une fois, on peut identifier identiquement l'intervalle entre deux pics. On retrouve environ $123$ points soit $1.23*10^{-6}s$. L'épaisseur de la plaque est donc de $0.4 cm$.		}
+	\end{enumerate}
+	
+\section*{Conclusion}
+Ce TP à ainsi permis de mettre en évidence l'exemple d'utilisation des algorithmes de deconvolution. On a pu mettre en lumière l'inefficacité des moindres carrés en présence de bruit. La régularisation est donc nécessaire. Pour la norme $l_1$ la non-differentiabilité nous force à utiliser des algorithmes pour approximer au mieux le min de $J$. Malgrés sa sensibilité aux bruits importants, cet algorithme c'est révéler efficace dans la détection des piques par ultrasons. La limite pourra être atteinte pour des materiaux très fin et donc des pics trop proche.
+\pagebreak
+
+\begin{appendices}
+  \section{Simulation d'un problème direct}
+    \lstinputlisting[language=Matlab]{../probleme_direct.m}
+  \section{Seuillage doux}
+    \lstinputlisting[language=Matlab]{../seuillage_doux.m}
+  \section{Algorithme ISTA}
+    \lstinputlisting[language=Matlab]{../ista.m}
+  \section{Code utilisation des méthodes }
+    \lstinputlisting[language=Matlab]{../main.m}
+\end{appendices}
+  
+
+
+\end{document}
