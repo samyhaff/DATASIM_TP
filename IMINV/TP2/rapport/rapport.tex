@@ -11,7 +11,7 @@
 \maketitle
 
 \section*{Introduction}
-Dans ce TP, l'objectif est d'analyser un objet à l'aide de signaux ultrasons. La séquence de réflectivité $x$ sera un singal parcimonieux où chaque pics correspond à un changement d'impédances. L'objectif est de détecter ces pics efficacement. Pour se faire, on considère que notre signal reçu $y$, est la convolution du singal recherché $x$ avec la réponse impulsionelle $h$ du transducteurs avec une incertitude comportant entre autre le bruit de mesure et les erreurs de modélisation. On adopte donc le modèle :
+Dans ce TP, l'objectif est d'analyser un objet à l'aide de signaux ultrasons. La séquence de réflectivité $x$ sera un singal parcimonieux où chaque pic correspond à un changement d'impédance. L'objectif est de détecter ces pics efficacement. Pour ce faire, on considère que notre signal reçu $y$, est la convolution du signal recherché $x$ avec la réponse impulsionnelle $h$ du transducteur avec une incertitude comportant entre autres le bruit de mesure et les erreurs de modélisation. On adopte donc le modèle :
 $$
 y=x\ast h + incertitudes
 $$
@@ -21,7 +21,7 @@ Simulons le problème en utilisant un exemple de réponse impulsionnelle. On ado
 $$
 z=Hx+b
 $$
-Pour simuler le problème efficacement on utilise la convolution de matlab, qui nous évite d'utiliser de grosse matrice dans l'algorithme. On peut alors générer un signal $z$ avec un rapport signal sur bruit donné.
+Pour simuler le problème efficacement on utilise la convolution de matlab, qui nous évite d'utiliser de grosses matrices dans l'algorithme. On peut alors générer un signal $z$ avec un rapport signal sur bruit donné.
 	\begin{figure}[H]
      		\centering
     		\begin{subfigure}[H]{0.45\textwidth}
@@ -45,7 +45,7 @@ Pour simuler le problème efficacement on utilise la convolution de matlab, qui 
 		    	\centering
 			\caption{Simulation avec un rapport signal sur bruit infini}
 		\end{figure}
-		Pour un rapport signal sur bruit infini, le bruit est quasiment inexistant. La solution des moindres carrés fonctionne donc bien :
+		Pour un rapport signal sur bruit infini, le bruit est inexistant. La solution des moindres carrés fonctionne donc bien :
 		\begin{figure}[H]
     			\includegraphics[width=0.7\textwidth]{mc2}
 		    	\centering
@@ -70,7 +70,7 @@ Pour simuler le problème efficacement on utilise la convolution de matlab, qui 
 		$$
 		\hat{x_{MC}}=(H^TH)^{-1}H^T(Hx+b)=x+(H^TH)^{-1}H^Tb
 		$$
-		Le bruit est donc multiplier par un facteur très grand devant lui. En effet, $H$ étant mal conditionnée, les valeurs propres de $H^TH$ sont très petite, donc l'inverse fournit de très grande valeurs propres.
+		Le bruit est donc multiplier par un facteur très grand devant lui. En effet, $H$ étant mal conditionnée, les valeurs propres de $H^TH$ sont très petites, donc l'inverse fournit de très grande valeurs propres.
 		}
 		\item{
 		On pénalise donc la solution des moindres carrés par norme $l_1$:
@@ -97,7 +97,7 @@ Pour simuler le problème efficacement on utilise la convolution de matlab, qui 
 		    	\centering
 			\caption{Solution de l'algorithme ISTA avec un rapport signal sur bruit de $10dB$}
 		\end{figure}
-		Pour une presence de bruit presque nul ou très bonne, on arrive à obtenir un resultat très correct. Seul les pics vraiment proche posent un problèmes car ils sont associés comme un seul pics. Pour un rapport singal sur bruit moyen, on commence à voir apparaître des fausses valeurs due au bruit.
+		Pour une presence de bruit presque nul ou très bonne, on arrive à obtenir un resultat très correct. Seuls les pics vraiment proches posent un problèmes car ils sont associés en un seul pics. Pour un rapport singal sur bruit moyen, on commence à voir apparaître des fausses valeurs dues au bruit.
 		}
 	\end{enumerate}
 \pagebreak
@@ -110,19 +110,19 @@ Pour simuler le problème efficacement on utilise la convolution de matlab, qui 
 		    	\centering
 			\caption{Déconvolution du signal $z_1$ avec $\mu=1$}
 		\end{figure}
-		On retrouve un intervalle temporelle entre deux pics d'environs $1206$ points. La fréquence d'échantillonnage étant de $100MHz$, cela correspond à un intervalle de $\delta t=1.2*10^{-5}s$. La vitesse du son dans l'aluminium étant de $v=6380m.s^{-1}$, la distance parcourue est donc $d=\delta t*v=0.077m$. Ainsi l'epaisseur de la plaque est de $3.85cm$.
+		On retrouve un intervalle temporelle entre deux pics d'environs 1206 points. La fréquence d'échantillonnage étant de 100 MHz, cela correspond à un intervalle de $\delta t=1.2*10^{-5}$ s. La vitesse du son dans l'aluminium étant de v = 6380 m.$s^{-1}$, la distance parcourue est donc $d=\delta t*v=0.077$ m. Ainsi l'épaisseur de la plaque est de 3.85 cm.
 		}
-		\item{Pour une plaque plus fine, on retrouve la deconvolution suivante : 
+		\item{Pour une plaque plus fine, on retrouve la deconvolution suivante :
 		\begin{figure}[H]
     			\includegraphics[width=0.6\textwidth]{z2}
 		    	\centering
 			\caption{Déconvolution du signal $z_1$ avec $\mu=1$}
 		\end{figure}
-		Encore une fois, on peut identifier identiquement l'intervalle entre deux pics. On retrouve environ $123$ points soit $1.23*10^{-6}s$. L'épaisseur de la plaque est donc de $0.4 cm$.		}
+		Encore une fois, on peut identifier identiquement l'intervalle entre deux pics. On retrouve environ 123 points soit $1.23*10^{-6}$ s. L'épaisseur de la plaque est donc de 0.4 cm.		}
 	\end{enumerate}
-	
+
 \section*{Conclusion}
-Ce TP à ainsi permis de mettre en évidence l'exemple d'utilisation des algorithmes de deconvolution. On a pu mettre en lumière l'inefficacité des moindres carrés en présence de bruit. La régularisation est donc nécessaire. Pour la norme $l_1$ la non-differentiabilité nous force à utiliser des algorithmes pour approximer au mieux le min de $J$. Malgrés sa sensibilité aux bruits importants, cet algorithme c'est révéler efficace dans la détection des piques par ultrasons. La limite pourra être atteinte pour des materiaux très fin et donc des pics trop proche.
+Ce TP a ainsi permis de mettre en évidence des exemple d'utilisation des algorithmes de deconvolution. On a pu mettre en lumière l'inefficacité des moindres carrés en présence de bruit. La régularisation est donc nécessaire. Pour la norme $l_1$ la non-differentiabilité nous force à utiliser des algorithmes pour approximer au mieux le min de $J$. Malgré sa sensibilité aux bruits importants, cet algorithme s'est révélé efficace dans la détection des piques par ultrasons. La limite pourra être atteinte pour des matériaux très fin et donc des pics trop proches.
 \pagebreak
 
 \begin{appendices}
@@ -135,7 +135,7 @@ Ce TP à ainsi permis de mettre en évidence l'exemple d'utilisation des algorit
   \section{Code utilisation des méthodes }
     \lstinputlisting[language=Matlab]{../main.m}
 \end{appendices}
-  
+
 
 
 \end{document}
