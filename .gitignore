@@ -9,3 +9,4 @@ octave-workspace
 *.gif
 *.jpeg
 *.tiff
+!**/rapport/images/*
