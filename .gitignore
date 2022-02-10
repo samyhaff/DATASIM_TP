@@ -14,5 +14,10 @@ octave-workspace
 !**/rapport/images/*
 # LaTeX
 *.aux
+*.dep
+*.fdb_latexmk
 *.log
 *.out
+*.synctex.gz
+*.log
+*.fls
