@@ -11,12 +11,12 @@
 \maketitle
 
 \section*{Introduction}
-Dans ce TP, l'objectif est d'étudier l’estimation des réponses des détecteurs de façon non supervisée, c’est-à-dire seulement à partir des images observées. On adoptera le modèle suivant : 
+Dans ce TP, l'objectif est d'étudier l’estimation des réponses des détecteurs de façon non supervisée, c’est-à-dire seulement à partir des images observées. On adoptera le modèle suivant :
 $$
 	W_{m,n}=g_nZ_{m,n}
 $$
 avec $g_n$ le gain de la colonne n, $W_{m,n}$ le pixel mesurée en ligne m et colonne n, et $Z_{m,n}$ le pixel
-idéal. Pour simplifier les calculs, on adoptera le modèle logarithmique : 
+idéal. Pour simplifier les calculs, on adoptera le modèle logarithmique :
 $$
 	ln W_{m,n} = ln Z_{m,n} + ln g_n
 $$
@@ -30,13 +30,13 @@ La partie théorique a été corrigée en cours et une correction a été donné
 \section{Partie Pratique}
 
 \begin{enumerate}
-	\item{Commençons par simuler une image observée $W$ à partir de l'image $Z$ et des gains $g$ fournis. 
+	\item{Commençons par simuler une image observée $W$ à partir de l'image $Z$ et des gains $g$ fournis.
 	\begin{figure}[H]
      		\centering
     		\begin{subfigure}[H]{0.4\textwidth}
          		\centering
          		\includegraphics[width=\textwidth]{imageZ}
-         		\caption{Image idéal Z}
+         		\caption{Image idéale Z}
     		\end{subfigure}
      		\hfill
     	 	\begin{subfigure}[H]{0.4\textwidth}
@@ -104,7 +104,7 @@ La partie théorique a été corrigée en cours et une correction a été donné
 		\caption{valeurs de gains pour la méthode 3 et la méthode 4}
 	\end{figure}
 	}
-	\item{On peut alors comparer les 4 méthodes : 
+	\item{On peut alors comparer les 4 méthodes :
 	\begin{figure}[H]
     		\includegraphics[width=0.9\textwidth]{all}
     		\centering
@@ -120,7 +120,7 @@ La partie théorique a été corrigée en cours et une correction a été donné
   \section{Codes des méthodes d'estimation}
     \lstinputlisting[language=Matlab]{../main.m}
 \end{appendices}
-  
+
 
 
 \end{document}
