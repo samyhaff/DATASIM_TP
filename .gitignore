@@ -1,6 +1,8 @@
+# Matlab and Jupyter
 octave-workspace
 .ipynb_checkpoints/
 .DS_Store
+# Images
 *.asv
 *.jpg
 *.png
@@ -10,3 +12,8 @@ octave-workspace
 *.jpeg
 *.tiff
 !**/rapport/images/*
+# LaTeX
+*.aux
+*.log
+*.out
+
