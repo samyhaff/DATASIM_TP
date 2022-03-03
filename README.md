@@ -1,7 +1,5 @@
 # DATASIM_TP
 
-## Alias Shell
-
 ```bash
 # création de rapport
 rapport () {
