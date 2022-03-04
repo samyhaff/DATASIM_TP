@@ -65,6 +65,8 @@ La fonction de coût Dice est alors définie par $L(y_{pred}, y_{true}) = 1 - s(
 
 \section{Entrainement et test}
 
+\subsection{Entrainement}
+
 Pour entrainer le modèle on utilise 25 epochs et un batch size de 25.
 
 On remarque naturellement l'impact des dimensions des images. Plus ces dernières sont
@@ -83,6 +85,51 @@ On obtient les tracés suivants :
     \includegraphics[width=\textwidth]{train}
     \centering
 \end{figure}
+
+On observe que la précision converge vers 1 et que la fonction de coût décroit convenablement.
+On peut faire varier les paramètres \texttt{epochs} et \texttt{batch\_size}. Augmenter \texttt{epochs},
+nous permet d'obtenir de meilleurs résultats jusqu'à un certain seuil d'overfitting qui
+baissera l'efficacité du modèle. En ce qui concerne \texttt{batch\_size}, il s'agit du
+paramètre définissant le nombre de samples propagés dans le réseau, on retrouve les défauts
+et avantages principaux de choisir \texttt{batch\_size} inférieur au nombre total de samples :
+
+\begin{itemize}
+    \item{Avantage : Ça demande moins de mémoire et l'entrainement est plus rapide.}
+    \item{Inconvénient: Plus la valeur de \texttt{batch\_size} est faible, plus l'estimation
+        du gradient est mauvaise.}
+\end{itemize}
+
+\subsection{Test}
+
+On dispose de 10 images pour tester notre modèle.
+
+On obtient les résultats suivants :
+
+\begin{figure}[H]
+    \caption{Prédictions du modèle}
+    \includegraphics[width=0.7\textwidth]{test_1}
+    \centering
+\end{figure}
+
+On observe que ces résultats sont assez convaincants. En effet, comme précisé plus haut,
+nous disposons pas de masques pour l'ensemble de test donc, on ne peut faire que des
+comparaisons visuelles. Ici, les masques sont souvent corrects en comparaison avec les
+images. On aurait pu afficher les images en grayscale pour mieux comparer visuellement
+mais ça n'aurait pas eu un grand effet.
+
+\section{Comparaison et améliorations}
+
+Lors de cette dernière partie on va essayer d'améliorer les performances
+du modèle précèdent à travers différentes
+
+\subsection{Data Augmentation}
+
+Cette première piste consiste, comme son nom l'indique, en  une
+augmentation de la quantité de données. Cette augmentation, artificielle,
+consiste en la modification des images à travers différentes transformations
+telles que des rotations ou des translations. Cette méthode permet de
+réduire l'overfitting puisqu'on fournit alors plus de données à notre
+modèle.  On choisit de réaliser cette augmentation en ligne.
 
 \begin{appendices}
 
