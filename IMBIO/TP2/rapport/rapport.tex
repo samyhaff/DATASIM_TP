@@ -18,7 +18,9 @@ correspondante à ce qui est représenté. L'idée derrière l'utilisation de De
 les outils automatiques permettent de gagner énormément de temps et d'argent pour les diagnostics
 biomédicaux, ces outils deviennent de plus en plus cruciaux car les machines peuvent épauler
 les analyses effectuées par les radiologues, afin de réduire le temps nécessaire pour établir
-des diagnostics. Nous nous intéressons ici à l'architecture \textbf{U-Net} qui permet justement d'effectuer
+des diagnostics.
+
+Nous nous intéressons ici à l'architecture \textbf{U-Net} qui permet justement d'effectuer
 des taches de segmentation sémantique. Le U-net est un réseau de neurones à convolution entièrement
 convolutionnel. L'idée principale derrière cette architecture est de remplacer les opérations
 de pooling par des opérateurs de suréchantillonnage ce qui implique l'augmentation de de la
@@ -115,12 +117,13 @@ On observe que ces résultats sont assez convaincants. En effet, comme précisé
 nous disposons pas de masques pour l'ensemble de test donc, on ne peut faire que des
 comparaisons visuelles. Ici, les masques sont souvent corrects en comparaison avec les
 images. On aurait pu afficher les images en grayscale pour mieux comparer visuellement
-mais ça n'aurait pas eu un grand effet.
+mais ça n'aurait pas eu un grand effet. Par ailleurs la précision tendant vers 1 pourrait
+indiquer que notre modèle est en overfitting.
 
 \section{Comparaison et améliorations}
 
 Lors de cette dernière partie on va essayer d'améliorer les performances
-du modèle précèdent à travers différentes
+du modèle précèdent à travers différentes méthodes.
 
 \subsection{Data Augmentation}
 
@@ -129,7 +132,74 @@ augmentation de la quantité de données. Cette augmentation, artificielle,
 consiste en la modification des images à travers différentes transformations
 telles que des rotations ou des translations. Cette méthode permet de
 réduire l'overfitting puisqu'on fournit alors plus de données à notre
-modèle.  On choisit de réaliser cette augmentation en ligne.
+modèle.
+
+On choisit de réaliser cette augmentation en ligne. C'est-à-dire qu'au lieu
+de générer plus de données dès le chargement des données on le fait lors de l'entrainement
+du modèle. Cette approche présente deux avantages :
+
+\begin{itemize}
+    \item{On gagne en vitesse grâce à l'accélération GPU}
+    \item{On conserve cette étape même après exportation du modèle}
+\end{itemize}
+
+\subsection{Validation Set}
+
+On opte également pour l'utilisation d'un ensemble de validation. Le modèle mettra à part des
+données et les utilisera à la fin de chaque epochs pour évaluer la fonction de coût et la
+précision. Cette étape nous permettra alors d'identifier des cas d'overfitting ou d'underfitting
+après analyse des courbes obtenues.
+
+\subsection{Résultats obtenus}
+
+Après application des deux techniques ci-dessus on obtient les tracés suivants :
+
+    \begin{figure}[H]
+        \caption{Accuracy \& Loss}
+        \includegraphics[width=\textwidth]{train_val}
+        \centering
+    \end{figure}
+
+On observe que :
+
+\begin{itemize}
+    \item{Les courbes de précisions croissent et tendent aux alentours de 0.8}
+    \item{Les courbes de coût décroissent}
+    \item{Les performances entre l'ensemble de validation et d'entrainement sont très similaires,
+        le modèle généralise bien}
+\end{itemize}
+
+On obtient les prédictions suivantes :
+
+\begin{figure}[H]
+    \caption{Prédictions du modèle}
+    \includegraphics[width=0.7\textwidth]{test_1}
+    \centering
+\end{figure}
+
+Affichons les avec les prédictions fournies par le premier modèle :
+
+\begin{figure}[H]
+    \caption{Comparaison des prédictions}
+    \includegraphics[width=0.45\textwidth]{comparaison}
+    \centering
+\end{figure}
+
+On observe alors que le deuxième modèle est légèrement plus performant que le premier.
+Pour l'image 3 par exemple, qui est assez complexe, on voit que le deuxième modèle fournit un
+bien meilleur masque. Cependant, on voit sur l'exemple de l'image 10 par exemple que c'est le modèle 2 qui grossit
+légèrement les traits. Disons que de manière globale, le modèle 2 est plus performant même si
+les fonds fournis par le premier sont généralement plus noirs. Notre amélioration de modèle
+est bien effective mais peut encore être améliorée.
+
+\section*{Conclusion}
+En conclusion, nous avons pu nous entraîner sur l'architecture U-net de deep learning
+Nous avons pu voir que l'encodeur réduit les dimensions spatiales dans chaque couche et
+augmente les canaux. D'autre part, le décodeur augmente les dimensions spatiales tout en
+réduisant les canaux. Ces types de modèles sont extrêmement utilisés dans les applications du
+monde réel comme on a pu le voir. Notre amélioration du modèle nous prouve qu'il y'a encore
+beaucoup de travail à faire sur l'optimisation des paramètres de ces modèles et que leur
+capacité d'expansion semble un peu infinie.
 
 \begin{appendices}
 
