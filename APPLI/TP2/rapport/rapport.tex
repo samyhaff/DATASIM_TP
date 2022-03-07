@@ -1,0 +1,131 @@
+\documentclass[12pt,a4paper,titlepage]{scrartcl}
+
+\usepackage{preamble}
+
+\title{TP Traitement du signal et problèmes inverses}
+\subtitle{Applications sur des exemples EDF}
+\author{Saâd Aziz Alaoui, Yassine Jamoud, Samy Haffoudhi}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+Lors de ce TP nous allons explorer trois problèmes de traitement
+du signal en lien avec des exemples EDF. Le premier problème portera
+sur le traitement de signaux multicapteurs illustré sur des données
+de température issues de mesures de fibres optiques. Ensuite, nous
+nous intéresserons au problème inverse de surrésolution à partir de
+données de fibre optique déformation. Enfin, nous verrons le
+problème inverse d'estimation des sources à partir de données
+de contrôle non destructif ultrasonores.
+
+Pour chacun de ces exemples,
+nous commencerons tout d'abord par une présentation du contexte et
+de l'enjeu avant de jouer sur les paramètres des différentes méthodes
+pour bien appréhender leurs effets.
+
+% \begin{figure}[H]
+%     \caption{TITRE}
+%     \includegraphics[width=\textwidth]{nom_fichier}
+%     \centering
+% \end{figure}
+
+\section{Problème inverse de sources à partir de données de contrôle
+non-destructif ultrasonore}
+
+\subsection{Le contexte d'application}
+
+L'objectif de cette partie est de réaliser un contrôle non-destructif
+de défauts dans des soudures. Pour ce faire, on utilise des signaux
+ultrasonores induits par la soudure à inspecter.
+
+On souhaite, à l'aide de ces signaux, détecter des perturbations dues
+à ces défauts. Pour ce faire, nous disposons d'une ondelette de
+référence. Elle est réalisée par calibration à l'aide de 4 trous de
+1 millimètre.
+
+On peut donc détecter des défauts similaires à des trous d'un millimètre.
+En effet, par déconvolution, on peut retrouver les positions des défauts
+(à un décalage près du à la convolution)
+
+% figure 01
+
+Pour réaliser la déconvolution,on utilise une minimisation de l'erreur
+quadratique moyenne. En revanche, sans information à priori sur la
+réflectivité, on obtient des résultats de mauvaise qualité. On utilise
+alors une régularisation.
+
+% formule latex
+
+On obtient donc une nette amélioration mais le défaut apparait avec un
+double pic
+
+% figure 02
+
+Pour tenir compte de la possible déformation en phase de l'ondelette,
+on a recours à la transformée de Hilbert de l'ondelette $h$. On obtient
+alors un nouveau modèle de convolution ainsi qu'un nouveau critère
+à minimiser.
+
+% formule latex
+
+% figure 03
+
+On peut finalement observer le module des deux solutions sur le graphique
+ci-dessous :
+
+% figure 04
+
+\subsection{Influence des paramètres}
+
+On constate sur la figure ci-dessus que le choix des paramètres n'est
+clairement pas optimal.
+
+En effet, pour ce problème nous disposons de deux paramètres, $\lambda$
+et $\mu$ :
+
+\begin{itemize}
+    \item{Le paramètre $\mu$ permet de s'assurer de l'existence de la solution et
+        doit être non nul. Plus il est proche de 0, plus la solution
+        est optimale en revanche, l'optimisation sera plus complexe. On
+        choisit alors une valeur $\mu = 10^{-2}$ pour obtenir un bon
+        compromis.}
+    \item{Le paramètre $\lambda$ correspond au paramètre de régularisation.
+        Il contrôle le poids du terme de régularisation.}
+\end{itemize}
+
+Dans la partie précedente, nous avons choisi une valeur très faible pour
+le paramètre de régularisation : $\lambda = 10^{-4}$. On obtenait donc
+uen solution non optimale. En effet pour des valeurs faibles de $\lambda$,
+la régularisation aura un poids faible tandis qu'au contraire,
+pour des valeurs trop importantes de $\lambda$, on surrégularise.
+
+On constante alors que pour une valeur $\lambda = 10^{-3}$, on obtient
+les meilleurs résultats.
+
+Pour la solution réelle :
+
+% figure 2 opti
+
+Et pour la solution complexe :
+
+% figure 3 opti
+
+Et enfin, pour les modules :
+
+% figure 4 opti
+
+Pour des valeurs de $\lambda$, plus élevées, les pics sont trop épais
+et on perd donc en résolution.
+
+Remarque : On peut observer sur la FIGURE 4 OPTI, la solution complexe
+est bien plus intéressante que la solution réelle. En effet, on obtient
+bien un seul pic par défaut et on remarque aussi que pour le premier
+défaut, la solution complexe nous donne 2 pics. Il s'agit d'un défaut
+différent qui ne correspond pas à un trou (un défaut de surface) qui
+nécessite alors une autre ondelette afin d'être correctement detecté.
+
+\end{document}
