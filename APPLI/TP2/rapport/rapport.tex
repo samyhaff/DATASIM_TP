@@ -27,11 +27,92 @@ nous commencerons tout d'abord par une présentation du contexte et
 de l'enjeu avant de jouer sur les paramètres des différentes méthodes
 pour bien appréhender leurs effets.
 
-% \begin{figure}[H]
-%     \caption{TITRE}
-%     \includegraphics[width=\textwidth]{nom_fichier}
-%     \centering
-% \end{figure}
+\section{Traitement de signaux multicapteurs illustré sur des données
+de température issues de mesures de fibre optique}
+
+\subsection{Le contexte d'application}
+
+L'objectif de ce premier problème est la détection de fuites dans des digues en terre.
+Nous disposons de mesures de températures réparties par une fibre optique
+implantée dans la digue. Si il existe une fuite, la température mesurée au niveau de la
+fibre optique va subir l'influence de la température de l'eau dans le canal.
+
+On travaille sur les données suivantes :
+
+\begin{figure}[H]
+    \caption{Jeu de données}
+    \includegraphics[width=.7\textwidth]{profil}
+    \centering
+\end{figure}
+
+On centre les températures pour obtenir la figure ci-dessous :
+
+\begin{figure}[H]
+    \caption{Jeu de données, températures centrées}
+    \includegraphics[width=.7\textwidth]{profil_2}
+    \centering
+\end{figure}
+
+On adopte une approche de séparation de sources, l'objectif étant d'isoler les différentes
+sources résponsables des changements de température.
+
+On obtient les valeurs propres suivantes pour l'ACP :
+
+\begin{figure}[H]
+    \caption{Valeurs propres ACP}
+    \includegraphics[width=.6\textwidth]{valpropres}
+    \centering
+\end{figure}
+
+Et affichons les 6 premiers vecteurs propres :
+
+\begin{figure}[H]
+    \caption{6 premiers vecteurs propres ACP}
+    \includegraphics[width=.7\textwidth]{vecteurspropres}
+    \centering
+\end{figure}
+
+On observe alors que la première valeur propre est bien plus importante que les autres. Elle
+correspond à la réponse du sol, on commence alors par supprimer sa contribution.
+
+Après suppression de cette composante, on garde alors les composantes qui correspondent
+aux fuites et aux drains. On obtient alors le résidu suivant :
+
+\begin{figure}[H]
+    \caption{Résidu ACP}
+    \includegraphics[width=.8\textwidth]{residu}
+    \centering
+\end{figure}
+
+On obtient déjà une image bien plus claire où l'on peut distinguer uniquement quelques
+zones de température élevée. On peut alors détecter l'apparition de la fuite mais, pas
+la suivre.
+
+On applique maintenant trois méthodes de séparation de sources : Jade, Shibbs et ICa à partir
+d'un nombre de sources donné.
+
+On obtient par exemple pour $N = 4$, les sources suivantes :
+
+\begin{figure}[H]
+    \caption{Sources}
+    \includegraphics[width=\textwidth]{sources}
+    \centering
+\end{figure}
+
+Et ces résidus :
+
+\begin{figure}[H]
+    \caption{Résidus}
+    \includegraphics[width=\textwidth]{résidus}
+    \centering
+\end{figure}
+
+% sources_2
+% residus_2
+
+\subsection{Influence des paramètres}
+
+\pagebreak
 
 \section{Problème inverse de sources à partir de données de contrôle
 non-destructif ultrasonore}
@@ -41,43 +122,60 @@ non-destructif ultrasonore}
 L'objectif de cette partie est de réaliser un contrôle non-destructif
 de défauts dans des soudures. Pour ce faire, on utilise des signaux
 ultrasonores induits par la soudure à inspecter.
-
 On souhaite, à l'aide de ces signaux, détecter des perturbations dues
-à ces défauts. Pour ce faire, nous disposons d'une ondelette de
+à ces défauts. Nous disposons alors d'une ondelette de
 référence. Elle est réalisée par calibration à l'aide de 4 trous de
-1 millimètre.
+1 mm.
 
 On peut donc détecter des défauts similaires à des trous d'un millimètre.
 En effet, par déconvolution, on peut retrouver les positions des défauts
 (à un décalage près du à la convolution)
 
-% figure 01
+\begin{figure}[H]
+    \caption{Ondelette et trace à déconvoluer}
+    \includegraphics[width=.7\textwidth]{01}
+    \centering
+\end{figure}
 
-Pour réaliser la déconvolution,on utilise une minimisation de l'erreur
+Pour réaliser la déconvolution, on utilise une minimisation de l'erreur
 quadratique moyenne. En revanche, sans information à priori sur la
 réflectivité, on obtient des résultats de mauvaise qualité. On utilise
-alors une régularisation.
+alors une régularisation :
 
-% formule latex
+$$ J(r) = \lVert z - Hr \rVert^2 + \lambda \Phi(r) $$
 
-On obtient donc une nette amélioration mais le défaut apparait avec un
-double pic
+On obtient donc une nette amélioration par rapport à la trace à déconvoluer mais,
+le défaut apparait avec un double pic :
 
-% figure 02
+\begin{figure}[H]
+    \caption{Identification Réelle}
+    \includegraphics[width=.7\textwidth]{02}
+    \centering
+\end{figure}
 
 Pour tenir compte de la possible déformation en phase de l'ondelette,
 on a recours à la transformée de Hilbert de l'ondelette $h$. On obtient
 alors un nouveau modèle de convolution ainsi qu'un nouveau critère
-à minimiser.
+à minimiser. On obtient le nouveau critère :
 
-% formule latex
+$$ J(r,s) \lVert z - Hr - Gs \rVert^2 + \lambda \Phi(r,s) $$
 
-% figure 03
+Et le résultat suivant :
 
-On peut finalement observer le module des deux solutions sur le graphique
+\begin{figure}[H]
+    \caption{Identification Complexe}
+    \includegraphics[width=.7\textwidth]{03}
+    \centering
+\end{figure}
+
+On peut également observer le module des deux solutions sur le graphique
 ci-dessous :
 
-% figure 04
+\begin{figure}[H]
+    \caption{Comparaison des deux approches}
+    \includegraphics[width=.7\textwidth]{04}
+    \centering
+\end{figure}
 
 \subsection{Influence des paramètres}
 
@@ -90,7 +188,7 @@ et $\mu$ :
 \begin{itemize}
     \item{Le paramètre $\mu$ permet de s'assurer de l'existence de la solution et
         doit être non nul. Plus il est proche de 0, plus la solution
-        est optimale en revanche, l'optimisation sera plus complexe. On
+        est optimale. En revanche, l'optimisation sera plus complexe. On
         choisit alors une valeur $\mu = 10^{-2}$ pour obtenir un bon
         compromis.}
     \item{Le paramètre $\lambda$ correspond au paramètre de régularisation.
@@ -100,7 +198,7 @@ et $\mu$ :
 Dans la partie précedente, nous avons choisi une valeur très faible pour
 le paramètre de régularisation : $\lambda = 10^{-4}$. On obtenait donc
 uen solution non optimale. En effet pour des valeurs faibles de $\lambda$,
-la régularisation aura un poids faible tandis qu'au contraire,
+la régularisation aura un effet négligeable tandis qu'au contraire,
 pour des valeurs trop importantes de $\lambda$, on surrégularise.
 
 On constante alors que pour une valeur $\lambda = 10^{-3}$, on obtient
@@ -108,24 +206,37 @@ les meilleurs résultats.
 
 Pour la solution réelle :
 
-% figure 2 opti
+\begin{figure}[H]
+    \caption{Identification réelle}
+    \includegraphics[width=.7\textwidth]{02-opti}
+    \centering
+\end{figure}
 
 Et pour la solution complexe :
 
-% figure 3 opti
+\begin{figure}[H]
+    \caption{Identification complexe}
+    \includegraphics[width=.7\textwidth]{03-opti}
+    \centering
+\end{figure}
 
 Et enfin, pour les modules :
 
-% figure 4 opti
+\begin{figure}[H]
+    \caption{Comparaison des deux approches}
+    \label{fig:4opti}
+    \includegraphics[width=.7\textwidth]{04-opti}
+    \centering
+\end{figure}
 
 Pour des valeurs de $\lambda$, plus élevées, les pics sont trop épais
 et on perd donc en résolution.
 
-Remarque : On peut observer sur la FIGURE 4 OPTI, la solution complexe
+\textbf{Remarque} : On peut observer sur la figure \ref{4opti} que la solution complexe
 est bien plus intéressante que la solution réelle. En effet, on obtient
-bien un seul pic par défaut et on remarque aussi que pour le premier
-défaut, la solution complexe nous donne 2 pics. Il s'agit d'un défaut
-différent qui ne correspond pas à un trou (un défaut de surface) qui
+bien un seul pic par défaut. Cependant, on remarque que pour le premier
+défaut, la solution complexe nous donne aussi 2 pics. Il s'agit en fait d'un défaut
+différent qui ne correspond pas à un trou mais à un défaut de surface et qui
 nécessite alors une autre ondelette afin d'être correctement detecté.
 
 \end{document}

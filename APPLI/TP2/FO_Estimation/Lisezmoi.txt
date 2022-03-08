@@ -1,0 +1,16 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Identification des paramètres d'un modèle d'estimation de la température
+% de fibre optique en fonction de la température de l'air par minimisation 
+% alternée
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Le script "Script_FO_air.m" permet de lancer l'identification.
+Il fait appel automatiquement aux données.
+
+Cette procédure d'idientification inclut une procédure
+de suppression de tendance.
+
+
+

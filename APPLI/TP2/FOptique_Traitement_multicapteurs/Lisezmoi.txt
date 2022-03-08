@@ -1,0 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Traitement de signaux multicapteurs : application d'algorithmes de 
+% séparation de sources pour déterminer des anomalies non visibles
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Le script "Traitemnt_FO.m" permet de lancer la procédure.
+Il fait appel automatiquement aux données.
+
+
+
+
