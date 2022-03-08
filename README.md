@@ -1,5 +1,7 @@
 # DATASIM_TP
 
+Ajouts utiles shell :
+
 ```bash
 # création de rapport
 rapport () {
