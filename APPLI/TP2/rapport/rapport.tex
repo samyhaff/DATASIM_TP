@@ -88,13 +88,14 @@ On obtient déjà une image bien plus claire où l'on peut distinguer uniquement
 zones de température élevée. On peut alors détecter l'apparition de la fuite mais, pas
 la suivre.
 
-On applique maintenant trois méthodes de séparation de sources : Jade, Shibbs et ICa à partir
+On applique maintenant trois méthodes de séparation de sources : \textbf{Jade}, \textbf{Shibbs} et \textbf{ICA} à partir
 d'un nombre de sources donné.
 
 On obtient par exemple pour $N = 4$, les sources suivantes :
 
 \begin{figure}[H]
     \caption{Sources}
+    \label{fig:sources4}
     \includegraphics[width=\textwidth]{sources}
     \centering
 \end{figure}
@@ -107,10 +108,133 @@ Et ces résidus :
     \centering
 \end{figure}
 
-% sources_2
-% residus_2
+\subsection{Influence des paramètres}
+
+Le paramètre sur lequel nous pouvons jouer pour ce problème est le nombre
+de sources pour les différentes méthodes. Nous avons tracé les figures ci-dessus
+avec une valeur de 4 pour ce paramètre.
+
+Considérons maintenant  le cas d'un nombre de sources égal à 1.
+
+On obtient la figure suivante pour les sources :
+
+\begin{figure}[H]
+    \caption{Sources}
+    \includegraphics[width=\textwidth]{sources_2}
+    \centering
+\end{figure}
+
+Et pour les résidus :
+
+\begin{figure}[H]
+    \caption{Résidus}
+    \includegraphics[width=.9\textwidth]{residus_2}
+    \centering
+\end{figure}
+
+On observe alors sur ces figures que la méthode ICA résulte en moins de bruit que les
+deux autres méthodes. Le bruit est par exemple induit par des restes de la contribution
+du sol ou le drainage. Pour les deux premières méthodes qui prennent encore en compte ce
+bruit, on regarde alors les résidus. Le paramètre et la méthode utilisés indiquent alors si
+il faut plutôt observer les sources ou le résidu pour identifier les fuites.
+
+\pagebreak
+
+\section{Problème inverse de surrésolution à partir de données de fibre optique déformation}
+
+\subsection{Le contexte d'application}
+
+L'objectif de ce second problème est la localisation de fontis dans des digues en terre ou
+de déformations locales dans des bâtiments. Nous disposons de mesures de spectres par fibre
+optique pour estimer les déformations. Le but est alors de passer d'une information intégrée
+à une information plus locale. On va alors chercher à estimer à partir de mesures de spectre
+sur un intervalle, des spectres locaux.
+
+Voici les données brutes :
+
+\begin{figure}[H]
+    \caption{Données brutes}
+    \includegraphics[width=.8\textwidth]{spectreint}
+    \centering
+\end{figure}
+
+Cette figure indique alors une déformation aux alentours de $z = 16$. Mais ce spectre n'est
+pas assez précis. En effet, on observe clairement un étalement en $z$.
+
+Il s'agit d'un problème de déconvolution :
+
+$$ G(\nu, z) = W_z *_x s(\nu,x) $$
+
+On cherche $s$ mesurant $G$ avec $W_x$ un opérateur de moyenne.
+
+Une première approche consiste alors en la résolution du problème d'optimisation
+
+$\min \lVert x \rVert^2$ sous la contrainte $y = Hx$.
+
+On obtient le résultat suivant :
+
+\begin{figure}[H]
+    \caption{Rétropropagation}
+    \includegraphics[width=.8\textwidth]{retrop}
+    \centering
+\end{figure}
+
+Comme on peut le voir sur la figure, on obtient de mauvais résultats causé par le mauvais
+conditionnement de la matrice $H$.
+
+Afin d'ontenir une solution plus lisse on introduit un terme de régularisation en nrome 2
+pour arriver au critère suivant :
+
+$$ \min \frac{1}{2} \lVert Hx - f \rVert^2 + \frac{\lambda}{2} x^t \Delta_2 x$$
+
+On obtient pour $\lambda = 0.01$ le résultat suivant :
+
+\begin{figure}[H]
+    \caption{Solution pour $\lambda = 0.001$}
+    \includegraphics[width=.8\textwidth]{reg1}
+    \centering
+\end{figure}
 
 \subsection{Influence des paramètres}
+
+Le paramètre sur lequel nous pouvons jouer pour ce problème est $\lambda$, le paramètre
+de régularisation.
+
+Ce paramètre est responsable de l'importance accordée à la minimisation du terme
+$x^t \Delta_2 x$.
+
+\begin{itemize}
+    \item{Pour des valeurs faibles de $\lambda$, on accorde peu d'importance au terme de
+        régularisation et on s'approche de la première approche présentée}
+    \item{Pour des valeurs élevées de $\lambda$, on accorde beacoup d'importance à la
+        régularisation et on obtient une solution trop lisse. On accorde moins d'importance
+        aux données mesurées.}
+\end{itemize}
+
+Affichons les résultats obtenus pour deux autres valeurs de $\lambda$ :
+
+\begin{figure}[H]
+    \caption{Solution pour $\lambda = 0.0001$}
+    \includegraphics[width=.8\textwidth]{reg2}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Solution pour $\lambda = 10$}
+    \includegraphics[width=.8\textwidth]{reg3}
+    \centering
+\end{figure}
+
+On observe bien ce qui a été precisé plus haut.
+
+\begin{itemize}
+    \item{Pour $\lambda = 0.001$, on est proche de la solution naïve}
+    \item{Pour $\lambda = 10$, on obtient une solution lisse}
+\end{itemize}
+
+Il convient alors d'expeimenter avec différentes valeurs de $\lambda$ pour déterminer
+laquelel permet d'obtenir les meilleurs résultats en assurant le bon compromis entre
+proximité aux données et le lissage.
 
 \pagebreak
 
