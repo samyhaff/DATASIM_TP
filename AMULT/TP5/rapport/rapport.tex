@@ -48,7 +48,7 @@ On travaille sur les données suivantes :
     \item{$ D = 19626 $}
     \item{$ N = 91 $}
     \item{$ T = 200 $ échantillons}
-    \item{Les signaux génèrrés proviennent de deux régions sources}
+    \item{Les signaux génèrrés proviennent de deux régions sources décarrelées}
     \item{Le bruit est gaussien}
 \end{itemize}
 
@@ -70,7 +70,7 @@ Et l'activité des dipoles de l'espace source :
 \end{figure}
 
 On observe sur ces données des zones épileptiques quasiment similaires
-au sein d'une me source distribuée ainsi qu'une activité de fond gaussienne.
+ainsi qu'une activité de fond gaussienne.
 
 Sur la figure \ref{brain}, on observe bien les deux régions sources
 d'où proviennent les signaux générés. Nous allons comparer les résultats
@@ -91,6 +91,10 @@ On peut montrer par un calcul du gradient que la solution analytique vaut:
 
 $$ s = G^t(GG^t + \lambda)^{-1}x $$
 
+\textbf{Remarque :} Pour optimiser les calculs on passe par une décomposition en valeurs singulières,
+ce qui nous permet d'optimiser l'inversion puisqu'elle revient alors simplement
+à inverser les coefficients diagonaux.
+
 Par exemple, pour un rapport signal sur bruit égal à 10, affichons la
 DLE (Distance Localisation Error)  en fonction de la valeur du
 paramètre $\lambda$ :
@@ -103,28 +107,28 @@ paramètre $\lambda$ :
 \end{figure}
 
 On balaye une large bande de valeurs du paramètre $\lambda$ et on
-sélectionne celle qui permet de minimiser l'erreur DLE.
+sélectionne celle qui permet de minimiser l'erreur DLE. En plus de la large
+bande de fréquence il faut également s'assurer d'avoir une période d'échantillonnage
+assez faible mais le temps de calcul sera donc plus élevé.
 
 Affichons le résultat obtenu pour la valeur optimale de $\lambda$
-pour trois valeurs différentes du RSB :
+pour trois valeurs différentes du RSB sans utiliser de seuil dans un premier
+temps :
 
 \begin{figure}[H]
     \caption{RSB = 0.1}
-    \label{brain}
     \includegraphics[width=.6\textwidth]{03_01_lambda_opti}
     \centering
 \end{figure}
 
 \begin{figure}[H]
     \caption{RSB = 10}
-    \label{brain}
     \includegraphics[width=.6\textwidth]{03_10_lambda_opti}
     \centering
 \end{figure}
 
 \begin{figure}[H]
     \caption{RSB = 100}
-    \label{brain}
     \includegraphics[width=.6\textwidth]{03_100_lambda_opti}
     \centering
 \end{figure}
@@ -150,10 +154,135 @@ On observe bien que :
         si on veut obtenir des bons résultats.}
 \end{itemize}
 
+On peut par ailleurs noter l'influence du seuil sur le résultat. Les figures obtenues ci-dessus
+ont été tracé sans seuillage. Par exemple pour un seuil égal à 0.9 on serait alors sélectif
+et on obtient la figure suivante :
+
+\begin{figure}[H]
+    \caption{RSB = 10 et seuil de 0.9}
+    \includegraphics[width=.6\textwidth]{seuil_09}
+    \centering
+\end{figure}
+
+Le seuil est alors également un paramètre à ajuster.
+
 \section{L-curve}
 
 Pour obtenir la meilleure valeur de $\lambda$,  on exploite alors
 la L-Curve. Il s'agit du tracé de la norme de la solution en fonction
-de la norme du résidu.
+de la norme du résidu avec $\lambda$ comme paramètre.
+
+On choisir la valeur de $\lambda$ situé dans le coin de la L-curve afin d'assurer un bon
+compromis entre les deux errreurs à minimiser.
+
+Par exemple pour un RSB égal à 1, on obtient la L-curve suivante ainsi que la localisation
+de $\lambda_{opti}$ :
+
+\begin{figure}[H]
+    \caption{L-curve}
+    \label{brain}
+    \includegraphics[width=.8\textwidth]{LC}
+    \centering
+\end{figure}
+
+\section{Comparaison de trois méthodes}
+
+Une autre méthode consiste en l'utilisation du "Discrepacy principle".
+
+Affichons alors les résultats obtenus pour les 3 différentes méthodes pour un RSB égal à 0.1
+et pour une même valeur de seuil :
+
+\begin{figure}[H]
+    \caption{Méthode manuelle}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{man_01}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Méthode L-curve}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{l_01}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Méthode DISC}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{disc_01}
+    \centering
+\end{figure}
+
+Pour un RSB égal à 10 :
+
+\begin{figure}[H]
+    \caption{Méthode manuelle}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{man_seuil}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Méthode L-curve}
+    \label{brain}
+    \includegraphics[width=.5\textwidth]{LC_seuil}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Méthode DISC}
+    \label{brain}
+    \includegraphics[width=.5\textwidth]{DISC_seuil}
+    \centering
+\end{figure}
+
+Et enfin, pour un RSB égal à 100 :
+
+\begin{figure}[H]
+    \caption{Méthode manuelle}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{man_100}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Méthode L-curve}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{l_100}
+    \centering
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Méthode DISC}
+    \label{brain}
+    \includegraphics[width=.6\textwidth]{disc_100}
+    \centering
+\end{figure}
+
+On observe alors que :
+
+\begin{itemize}
+    \item{Pour les différentes valeurs du RSB, chaque méthode fournit des résultats
+        qui différent des autres}
+    \item{Dans ce cas, on observe que la méthode DISC fournit les meilleurs résultats,
+        suivie de la méthode manuelle et enfin de la méthode L-curve. Cependant, on ne peut
+        pas en déduire un classement général des méthodes.}
+    \item{Enfin, ajuster les seuil pourrait nous permettre d'observer des images plus proches
+        de la vérité terrain pour les différents cas}
+\end{itemize}
+
+\section*{Conclusion}
+
+Ainsi, au cours de ce TP nous avons pu nous intéresser au problème de la localisation de sources
+en EEG. Nous nous sommes focalisé sur la régularisation de Tikinnov et avons pu implémenter
+trois méthodes pour le choix du paramètre de régularisation : manuelle, L-curbe et DISC.
+
+Nous avons pu alors prendre conscience de la complexité du problème. En effet, en pratique,
+nous ne disposons pas de vérité terrain pour pouvoir évaluer nos résultats. De plus, le choix
+du paramètre de régularisation est complexe Nous n'avons pu exhiber aucune méthode simple nous
+permettant de toujours choisir la meilleure valeur. Au contraire, il faut plutôt essayer
+différentes méthodes et sélectionner celle qui nous semble fournir le meilleur résultat
+pour un problème donné. De plus, la valeur du seuil doit également être ajustée pour
+obtenir de bons résultats.
 
 \end{document}
