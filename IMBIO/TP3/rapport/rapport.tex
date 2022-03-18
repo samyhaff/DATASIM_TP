@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+
+\usepackage{preamble}
+
+\title{TP Segmentation d'images CT de foie en 2D}
+\author{Saâd Aziz Alaoui, Yassine Jamoud, Samy Haffoudhi}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+Lors de ce TP, nous allons travailler sur la segmentation d'images CT
+de foie. Pour ce faire, nous allons commencer par une analyse des données
+afin d'appréhender notamment la variabilité des données. Nous
+implémenterons ensuite un modèle U-NET afin de réaliser la segmentation.
+Enfin nous testerons le modèle et commenterons les résultats obtenus.
+
+\section{Analyse des données}
+
+\subsection{Les données}
+
+La base de données est constituée en tout de 131 images CT.
+Pour chaque image CT, nous disposons d'un nombre différent de coupes, toutes
+de taille 64x64. En pratique, on travaille sur les données 3D avec des
+coupes de taille 512x512, ces restrictions nous permettent d'accélérer
+la vitesse d'entrainement pour le TP.
+
+On s'intéresse à la partie centrale des coupes. En effet, hors de cette
+section, on aurait trop de variabilité et notre modèle sera incapable
+d'apprendre correctement.
+
+Affichons un exemple de tranches (indice z minimal, centré et maximal) et
+les masques correspondants.
+
+\begin{figure}[H]
+    \caption{3 tranches et les masques correspondants}
+    \includegraphics[width=.7\textwidth]{image_folle}
+    \centering
+\end{figure}
+
+\subsection{La variabilité des données}
+
+Afin d'appréhender la variabilité des données, affichons les intensités
+moeynnes pour les 131 images CT pour les trois tranches :
+
+\begin{figure}[H]
+    \caption{Intensités moyennes}
+    \includegraphics[width=.9\textwidth]{moyennes}
+    \centering
+\end{figure}
+
+Ainsi que les volume du foie :
+
+\begin{figure}[H]features variance machine learning
+    \caption{Volume des foies}
+    \includegraphics[width=.6\textwidth]{volumes}
+    \centering
+\end{figure}features variance machine learning
+
+Ainsi, on observe bien des variations entre les différentes images CT, ce
+qui est souhaitable pour l'entrainement du modèle.
+
+\section{Le modèle}
+
+\subsection{Les données}
+
+Pour construire les données \texttt{X} et les masques \texttt{Y}, on concatène les
+tranches centrales de chaque image CT ainsi que les masques correspondants.
+
+Pour réaliser le découpage entre données d'entrainement et de test,
+on choisit de se baser sur le nombre d'images CT plutôt que le nombre
+de tranches pour éviter le cas où on aurait trop de tranches similaires
+dans un des deux ensembles ou des images trop similaires entre les
+ensembles.
+
+\subsection{Le modèle}
+
+Nous nous intéressons ici à l'architecture \textbf{U-Net} qui permet justement d'effectuer
+des taches de segmentation sémantique. Le U-net est un réseau de neurones à convolution entièrement
+convolutionnel. L'idée principale derrière cette architecture est de remplacer les opérations
+de pooling par des opérateurs de suréchantillonnage ce qui implique l'augmentation de de la
+résolution de la sortie. Nous verrons lors de ce TP les différents atouts et défauts que comporte
+cette architecture en l'appliquant à des images biomédicales.
+
+Le modèle u-net est composé d'une couche d'entrée, un encodeur et un décodeur.
+L'encodeur et le décodeur ont une structure en blocs similaires mais des dimensions différentes.
+Chaque bloc de l'encodeur est composé de deux couches de convolution de mêmes dimensions,
+d'une couche de pooling et d'une fonction d'activation. Pour compenser la baisse de la
+dimension de l'image, le nombre de filtres augmente. Enfin, le modèle dispose également d'une
+liste de connexions entre l'encodeur et le décodeur.
+
+Une visualisation de l'architecture est disponible en annexe A. On observe bien la forme en U.
+
+\end{document}
