@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,titlepage]{article}
+\documentclass[12pt,a4paper,titlepage]{scrartcl}
 
 \usepackage{preamble}
 
@@ -54,14 +54,14 @@ moeynnes pour les 131 images CT pour les trois tranches :
 
 Ainsi que les volume du foie :
 
-\begin{figure}[H]features variance machine learning
+\begin{figure}[H]
     \caption{Volume des foies}
     \includegraphics[width=.6\textwidth]{volumes}
     \centering
-\end{figure}features variance machine learning
+\end{figure}
 
 Ainsi, on observe bien des variations entre les différentes images CT, ce
-qui est souhaitable pour l'entrainement du modèle.
+qui est évidemment souhaitable pour l'entrainement du modèle.
 
 \section{Le modèle}
 
@@ -82,16 +82,67 @@ Nous nous intéressons ici à l'architecture \textbf{U-Net} qui permet justement
 des taches de segmentation sémantique. Le U-net est un réseau de neurones à convolution entièrement
 convolutionnel. L'idée principale derrière cette architecture est de remplacer les opérations
 de pooling par des opérateurs de suréchantillonnage ce qui implique l'augmentation de de la
-résolution de la sortie. Nous verrons lors de ce TP les différents atouts et défauts que comporte
-cette architecture en l'appliquant à des images biomédicales.
+résolution de la sortie.
 
-Le modèle u-net est composé d'une couche d'entrée, un encodeur et un décodeur.
+Le modèle U-net est composé d'une couche d'entrée, un encodeur et un décodeur.
 L'encodeur et le décodeur ont une structure en blocs similaires mais des dimensions différentes.
 Chaque bloc de l'encodeur est composé de deux couches de convolution de mêmes dimensions,
 d'une couche de pooling et d'une fonction d'activation. Pour compenser la baisse de la
 dimension de l'image, le nombre de filtres augmente. Enfin, le modèle dispose également d'une
 liste de connexions entre l'encodeur et le décodeur.
 
-Une visualisation de l'architecture est disponible en annexe A. On observe bien la forme en U.
+Une visualisation de l'architecture est disponible en \textbf{annexe A}.
+
+\subsection{L'entrainement}
+
+On obtient les courbes d'apprentissage suivantes :
+
+\begin{figure}[H]
+    \caption{Courbes d'apprentissage}
+    \includegraphics[width=\textwidth]{learning}
+    \centering
+\end{figure}
+
+On observe que les deux courbes convergent dès les premiers epochs et qu'elles sont très
+proches. Le modèle apprend correctement.
+
+\section{Résultats et tests}
+
+On obtient un score dice de 0.81 ce qui est satisfaisant. En optimisant les typer-paramètres
+du modèle et en ayant par exemple recourt à de l'augmentation de données on pourrait essayer
+d'augmenter ce score.
+
+Affichons les résultats obtenus pour quelques tranches :
+
+\begin{figure}[H]
+    \caption{Résultats}
+    \includegraphics[width=.4\textwidth]{resultats}
+    \centering
+\end{figure}
+
+On observe que les résultats sont très satisfaisants pour ces différentes images. On note quand
+même la présence d'artefacts par exemple visibles pour la première et dernière image. Le travail
+sur notre modèle évoqué plus haut nous permettrait surement d'obtenir des résultats encore
+meilleurs.
+
+\section*{Conclusion}
+
+Ainsi, lors de ce TP nous avons pu travailler sur le problème de la segmentation d'images CT
+de foie. Bien que le cadre soit simplifié, nous avons pu découvrir le problème et ses enjeux
+en comprenant les données et en mettant en place un modèle U-Net permettant de réaliser la
+segmentation. Nous avons rapidement obtenu de bonne performances ce qui prouve la
+puissance de telles méthodes facilitant grandement le travail des médecins.
+
+\begin{appendices}
+
+    \section{L'architecture du modèle}
+
+    \begin{figure}[H]
+        \caption{Architecture}
+        \includegraphics[width=.4\textwidth]{model}
+        \centering
+    \end{figure}
+
+\end{appendices}
 
 \end{document}
