@@ -103,16 +103,22 @@ On obtient les courbes d'apprentissage suivantes :
     \centering
 \end{figure}
 
-On observe que les deux courbes convergent dès les premiers epochs et qu'elles sont très
-proches. Le modèle apprend correctement.
+On observe que les deux courbes de précision sont très proches de 1 dès les premières itérations et restent
+proches. Notre modèle apprend correctement.
 
 \section{Résultats et tests}
 
-On obtient un score dice de 0.81 ce qui est satisfaisant. En optimisant les typer-paramètres
+On obtient un score dice moyen de 0.83, ce qui est satisfaisant. En optimisant les typer-paramètres
 du modèle et en ayant par exemple recourt à de l'augmentation de données on pourrait essayer
 d'augmenter ce score.
 
-Affichons les résultats obtenus pour quelques tranches :
+\begin{figure}[H]
+    \caption{Boxplot Dice}
+    \includegraphics[width=.4\textwidth]{dicescore}
+    \centering
+\end{figure}
+
+Affichons les résultats obtenus pour trois tranches :
 
 \begin{figure}[H]
     \caption{Résultats}
@@ -120,10 +126,10 @@ Affichons les résultats obtenus pour quelques tranches :
     \centering
 \end{figure}
 
-On observe que les résultats sont très satisfaisants pour ces différentes images. On note quand
-même la présence d'artefacts par exemple visibles pour la première et dernière image. Le travail
-sur notre modèle évoqué plus haut nous permettrait surement d'obtenir des résultats encore
-meilleurs.
+On observe que les résultats sont satisfaisants pour ces différentes images. On note quand
+même la présence d'artefacts par exemple visibles pour la première image et de différences aux
+bords. Le travail sur notre modèle évoqué plus haut nous permettrait surement d'obtenir des résultats
+encore meilleurs.
 
 \section*{Conclusion}
 
